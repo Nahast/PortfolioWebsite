@@ -64,7 +64,7 @@ html, body {
 
 body { min-height: 100vh; }
 
-@media (pointer: fine) { body { cursor: none; } }
+@media (pointer: fine) { *, *::before, *::after { cursor: none; } }
 
 ::selection { background: var(--accent); color: var(--accent-ink); }
 
