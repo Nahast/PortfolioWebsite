@@ -30,10 +30,10 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${geistSans.variable} ${geistMono.variable}`}
     >
-      <head>
+      <body>
         <Script src="/theme-init.js" strategy="beforeInteractive" />
-      </head>
-      <body>{children}</body>
+        {children}
+      </body>
     </html>
   );
 }

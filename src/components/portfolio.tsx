@@ -62,8 +62,8 @@ const CONTENT = {
 }
 
 // ── Reveal observer hook ────────────────────────────────────────────────────
-function useReveal(threshold = 0.18): [React.RefObject<HTMLElement | null>, boolean] {
-  const ref = useRef<HTMLElement>(null)
+function useReveal<T extends HTMLElement = HTMLElement>(threshold = 0.18): [React.RefObject<T | null>, boolean] {
+  const ref = useRef<T>(null)
   const [seen, setSeen] = useState(false)
   useEffect(() => {
     if (!ref.current || seen) return
@@ -110,14 +110,15 @@ function fmtTime(d: Date, tz: string) {
 function Crosshair() {
   const ref = useRef<HTMLDivElement>(null)
   const [show, setShow] = useState(false)
+  const showRef = useRef(false)
   useEffect(() => {
     const isFine = window.matchMedia('(pointer: fine)').matches
     if (!isFine) return
     const onMove = (e: MouseEvent) => {
       if (ref.current) ref.current.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`
-      setShow(true)
+      if (!showRef.current) { showRef.current = true; setShow(true) }
     }
-    const onLeave = () => setShow(false)
+    const onLeave = () => { showRef.current = false; setShow(false) }
     window.addEventListener('mousemove', onMove)
     window.addEventListener('mouseleave', onLeave)
     return () => {
@@ -180,7 +181,7 @@ function Hero() {
 
   return (
     <header className="hero">
-      <div className="hero-grid" />
+      <div className={'hero-grid' + (inMark ? ' show' : '')} />
       <div ref={ref}>
         <div className="hero-tag">
           <div className="a">— Portfolio / 2026.04</div>
@@ -222,11 +223,11 @@ function SecMeta({ num, label, desc }: { num: string; label: string; desc: strin
 
 // ── About ───────────────────────────────────────────────────────────────────
 function About() {
-  const [ref, seen] = useReveal(0.2)
+  const [ref, seen] = useReveal<HTMLDivElement>(0.2)
   return (
     <section id="about" className="sec about shell">
       <SecMeta num="01" label="About — Origin & focus" desc="Who I am, what I work on, and how I work." />
-      <div className="grid-12" ref={ref as React.RefObject<HTMLDivElement>}>
+      <div className="grid-12" ref={ref}>
         <aside className="about-side">
           {CONTENT.about.meta.map((m, i) => (
             <div key={i} style={{ marginBottom: 18 }}>
@@ -260,9 +261,9 @@ function Skills() {
   )
 }
 function SkillCell({ s, delay }: { s: typeof CONTENT.skills[number]; delay: number }) {
-  const [ref, seen] = useReveal(0.15)
+  const [ref, seen] = useReveal<HTMLDivElement>(0.15)
   return (
-    <div ref={ref as React.RefObject<HTMLDivElement>} className={'skill-cell reveal' + (seen ? ' in' : '')} style={{ transitionDelay: seen ? `${delay}ms` : '0ms' }}>
+    <div ref={ref} className={'skill-cell reveal' + (seen ? ' in' : '')} style={{ transitionDelay: seen ? `${delay}ms` : '0ms' }}>
       <div className="idx">— {s.idx}</div>
       <div className="head">{s.head}</div>
       <div className="desc">{s.desc}</div>
@@ -284,7 +285,7 @@ function Work() {
 }
 
 function Project({ p, i }: { p: typeof CONTENT.projects[number]; i: number }) {
-  const [ref, seen] = useReveal(0.12)
+  const [ref, seen] = useReveal<HTMLElement>(0.12)
   const previewRef = useRef<HTMLDivElement>(null)
   useEffect(() => {
     const cardEl = ref.current
@@ -300,7 +301,7 @@ function Project({ p, i }: { p: typeof CONTENT.projects[number]; i: number }) {
     return () => window.removeEventListener('scroll', onScroll)
   }, [ref])
   return (
-    <article ref={ref as React.RefObject<HTMLElement>} className={'proj reveal' + (seen ? ' in' : '')} style={{ transitionDelay: seen ? `${i * 80}ms` : '0ms' }}>
+    <article ref={ref} className={'proj reveal' + (seen ? ' in' : '')} style={{ transitionDelay: seen ? `${i * 80}ms` : '0ms' }}>
       <div className="num">— {p.num}</div>
       <div className="meta">
         <h3 className="ttl">
@@ -341,9 +342,9 @@ function Experience() {
   )
 }
 function ExpRow({ e, i }: { e: typeof CONTENT.experience[number]; i: number }) {
-  const [ref, seen] = useReveal(0.1)
+  const [ref, seen] = useReveal<HTMLDivElement>(0.1)
   return (
-    <div ref={ref as React.RefObject<HTMLDivElement>} className={'exp-row reveal' + (seen ? ' in' : '')} style={{ transitionDelay: seen ? `${i * 50}ms` : '0ms' }}>
+    <div ref={ref} className={'exp-row reveal' + (seen ? ' in' : '')} style={{ transitionDelay: seen ? `${i * 50}ms` : '0ms' }}>
       <div className="yrs tnum">{e.yrs}</div>
       <div className="role">{e.role} <span className="co">{e.co}</span></div>
       <div className="scope">{e.scope}</div>
@@ -354,12 +355,12 @@ function ExpRow({ e, i }: { e: typeof CONTENT.experience[number]; i: number }) {
 
 // ── Contact ─────────────────────────────────────────────────────────────────
 function Contact() {
-  const [ref, seen] = useReveal(0.2)
+  const [ref, seen] = useReveal<HTMLDivElement>(0.2)
   return (
     <section id="contact" className="sec contact shell">
       <SecMeta num="05" label="Contact — Channels" desc="Quickest path is email. I reply within 24h." />
       <div className="grid-12">
-        <div className="contact-inner" ref={ref as React.RefObject<HTMLDivElement>}>
+        <div className="contact-inner" ref={ref}>
           <h2 className={'reveal' + (seen ? ' in' : '')}>
             {CONTENT.contact.headline[0]}<br />
             {CONTENT.contact.headline[1]}<br />
