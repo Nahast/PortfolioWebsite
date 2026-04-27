@@ -181,7 +181,6 @@ function Hero() {
 
   return (
     <header className="hero">
-      <div className={'hero-grid' + (inMark ? ' show' : '')} />
       <div ref={ref}>
         <div className="hero-tag">
           <div className="a">— Portfolio / 2026.04</div>
@@ -401,15 +400,17 @@ export default function App() {
       <ReadingProgress />
       <Crosshair />
       <Nav theme={theme} setTheme={setTheme} />
-      <main>
-        <Hero />
-        <About />
-        <Skills />
-        <Work />
-        <Experience />
-        <Contact />
-      </main>
-      <Footer />
+      <div style={{ paddingInline: '20px' }}>
+        <main>
+          <Hero />
+          <About />
+          <Skills />
+          <Work />
+          <Experience />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
     </>
   )
 }

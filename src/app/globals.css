@@ -64,6 +64,8 @@ html, body {
 
 body { min-height: 100vh; }
 
+@media (pointer: fine) { body { cursor: none; } }
+
 ::selection { background: var(--accent); color: var(--accent-ink); }
 
 /* utilities */
@@ -130,7 +132,7 @@ body { min-height: 100vh; }
 .theme-btn {
   appearance: none; border: 0; background: transparent;
   color: inherit; font: inherit; letter-spacing: inherit; text-transform: inherit;
-  cursor: pointer; display: inline-flex; align-items: center; gap: 6px;
+  display: inline-flex; align-items: center; gap: 6px;
 }
 .theme-btn .sw {
   width: 24px; height: 12px; border-radius: 999px;
@@ -152,19 +154,6 @@ body { min-height: 100vh; }
   padding: 96px var(--gutter-hero) 32px;
 }
 
-.hero-grid {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image:
-    linear-gradient(to right, var(--rule-2) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--rule-2) 1px, transparent 1px);
-  background-size: calc((100% - 2 * var(--gutter-hero)) / 12) 80px;
-  background-position: var(--gutter-hero) 0;
-  opacity: 0;
-  transition: opacity 400ms var(--ease);
-}
-.hero-grid.show { opacity: 0.6; }
 
 .hero-tag {
   display: grid;
@@ -336,7 +325,6 @@ body { min-height: 100vh; }
   border-bottom: 1px solid var(--rule);
   padding: 28px 0;
   align-items: start;
-  cursor: pointer;
   transition: background 220ms var(--ease);
 }
 .proj:hover { background: var(--bg-2); }
