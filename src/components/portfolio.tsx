@@ -12,16 +12,17 @@ const CONTENT = {
   location: 'Irvine, CA',
   about: {
     body: [
-      { t: 'Software engineer building systems that are ' },
-      { t: 'intelligent and lightning-fast', hl: true },
-      { t: '. I work across cloud architecture, distributed computing, and ML integration — currently at ' },
+      { t: 'Software engineer building ' },
+      { t: 'intelligent, lightning-fast', hl: true },
+      { t: ' systems. Now CPO and software lead at ' },
+      { t: 'Warp Lab', strong: true },
+      { t: ', shipping a private edge AI appliance. Previously SDE II at ' },
       { t: 'Amazon', strong: true },
-      { t: ', previously at Kanopy. ' },
-      { t: 'I care about correctness under load, scalable design, and shipping software that quietly does its job for millions of customers.', muted: true },
+      { t: ' creating distributed services, ML experimentation.' },
     ],
     meta: [
-      { k: 'Now', v: 'SDE II — Amazon' },
-      { k: 'Based', v: 'Irvine / Santa Monica, CA' },
+      { k: 'Now', v: 'CPO & Software Lead — Warp Lab' },
+      { k: 'Based', v: 'Costa Mesa / Santa Monica, CA' },
       { k: 'Education', v: 'M.Eng CS — EPITA' },
       { k: 'Languages', v: 'English · French (bilingual)' },
     ],
@@ -37,18 +38,19 @@ const CONTENT = {
     { idx: '08', head: 'Domains', desc: 'E-commerce, streaming media, content management, telecom.', stack: ['Marketing', 'OTT', 'CMS'] },
   ],
   projects: [
-    { num: '01', title: 'xBR Agent Workflows', year: '2024 — present', desc: 'Distributed agent workflows automating xBR operational pipelines at Amazon. Reclaimed 4+ hours of PM bandwidth weekly and improved cross-service data validation accuracy.', tags: ['Agents', 'AWS', 'Distributed'], ph: 'xBR — workflow graph' },
-    { num: '02', title: 'Marketing & Discoverability ML', year: '2025', desc: 'ML-driven experiments deployed on AWS Lambda + Python, plugged into internal experimentation frameworks. Personalization and merchandising optimization for millions of customers.', tags: ['ML', 'Lambda', 'Python'], ph: 'Experimentation — ML rollout' },
-    { num: '03', title: 'Serverless Ingestion @ Kanopy', year: '2021 — 2024', desc: 'Architected fault-tolerant serverless ingestion in TypeScript (Nest.js) and AWS Lambda. 98% reliability across external supplier content.', tags: ['TypeScript', 'Nest.js', 'Lambda'], ph: 'Ingestion — pipeline diagram' },
-    { num: '04', title: 'ECS Containerization', year: '2023', desc: 'Deployed scalable containerized services with Docker + AWS ECS. Reduced system errors from 2,000+/day to near zero post-deployment.', tags: ['ECS', 'Docker', 'Reliability'], ph: 'ECS — service topology' },
-    { num: '05', title: 'Captions Automation', year: '2022', desc: 'Automated video captioning pipelines with Nuxt.js, Python and FFmpeg. Cut manual editing time by 80% and streamlined accessibility workflows.', tags: ['Nuxt.js', 'Python', 'FFmpeg'], ph: 'Captions — internal UI' },
-    { num: '06', title: 'Asset Versioning Revamp', year: '2024', desc: 'Redesigned versioning and asset management systems. Improved publication throughput by 150% YoY and stabilized the CI/CD release pipeline.', tags: ['Versioning', 'CI/CD', 'Throughput'], ph: 'Bundler — throughput chart' },
+    { num: '01', title: 'Warp Lab — Edge AI Appliance', year: '2025 — present', desc: 'Three-chip edge AI appliance pairing a routing ASIC for hardware-enforced WAN/LAN isolation, a custom ARM SoC for application services, and an NVIDIA Jetson module for AI inference. Runs private LLMs, embeddings and vision on-device behind a Nextcloud headless backend with Home Assistant integration.', tags: ['Jetson', 'ARM', 'LLMs', 'Nextcloud'], ph: 'Warp Lab — three-chip architecture' },
+    { num: '02', title: 'xBR Agent Workflows', year: '2024 — 2026', desc: 'Distributed agent workflows automating xBR operational pipelines at Amazon. Reclaimed 4+ hours of PM bandwidth weekly and improved cross-service data validation accuracy.', tags: ['Agents', 'AWS', 'Distributed'], ph: 'xBR — workflow graph' },
+    { num: '03', title: 'Marketing & Discoverability ML', year: '2025', desc: 'ML-driven experiments deployed on AWS Lambda + Python, plugged into internal experimentation frameworks. Personalization and merchandising optimization for millions of customers.', tags: ['ML', 'Lambda', 'Python'], ph: 'Experimentation — ML rollout' },
+    { num: '04', title: 'Serverless Ingestion @ Kanopy', year: '2021 — 2024', desc: 'Architected fault-tolerant serverless ingestion in TypeScript (Nest.js) and AWS Lambda. 98% reliability across external supplier content.', tags: ['TypeScript', 'Nest.js', 'Lambda'], ph: 'Ingestion — pipeline diagram' },
+    { num: '05', title: 'ECS Containerization', year: '2023', desc: 'Deployed scalable containerized services with Docker + AWS ECS. Reduced system errors from 2,000+/day to near zero post-deployment.', tags: ['ECS', 'Docker', 'Reliability'], ph: 'ECS — service topology' },
+    { num: '06', title: 'Captions Automation', year: '2022', desc: 'Automated video captioning pipelines with Nuxt.js, Python and FFmpeg. Cut manual editing time by 80% and streamlined accessibility workflows.', tags: ['Nuxt.js', 'Python', 'FFmpeg'], ph: 'Captions — internal UI' },
+    { num: '07', title: 'Asset Versioning Revamp', year: '2024', desc: 'Redesigned versioning and asset management systems. Improved publication throughput by 150% YoY and stabilized the CI/CD release pipeline.', tags: ['Versioning', 'CI/CD', 'Throughput'], ph: 'Bundler — throughput chart' },
   ],
   experience: [
-    { yrs: 'Oct 2024 — present', role: 'Software Development Engineer II', co: 'Amazon', scope: 'Distributed agent workflows, ML experimentation, Privacy Bar Raiser.', loc: 'Santa Monica, CA' },
-    { yrs: 'Feb 2021 — Oct 2024', role: 'Software Development Engineer I', co: 'Kanopy', scope: 'Serverless ingestion, ECS services, captioning automation, asset versioning.', loc: 'San Francisco, CA' },
+    { yrs: '2025 — present', role: 'CPO & Software Lead', co: 'Warp Lab', scope: 'Three-chip edge AI appliance: routing ASIC + ARM SoC + Jetson, private LLM inference, Nextcloud headless backend.', loc: 'Costa Mesa, CA' },
+    { yrs: 'Oct 2024 — Mar 2026', role: 'Sr. Software Development Engineer', co: 'Amazon', scope: 'Distributed microservices and ETL on AWS Lambda, ML-driven experiments in SageMaker, Privacy Bar Raiser.', loc: 'Santa Monica, CA' },
+    { yrs: 'Feb 2021 — Oct 2024', role: 'Full Stack Engineer', co: 'Kanopy', scope: 'Serverless ingestion, ECS services, captioning automation, asset versioning.', loc: 'San Francisco, CA' },
     { yrs: 'Oct 2019 — May 2021', role: 'Project Manager', co: 'HeadMind', scope: 'Telecom automation for 4M+ devices; QA, DevOps, and CI/CD frameworks.', loc: 'Paris, FR' },
-    { yrs: 'Feb 2018 — Feb 2019', role: 'Backend Software Engineer', co: 'Kanopy', scope: 'PHP / Python / SQL backends, Vue.js apps for Fire TV and smart TVs.', loc: 'San Francisco, CA' },
   ],
   contact: {
     headline: ["Let's", 'build something', 'exact.'],
@@ -79,24 +81,28 @@ function useReveal<T extends HTMLElement = HTMLElement>(threshold = 0.18): [Reac
 }
 
 // ── Theme ───────────────────────────────────────────────────────────────────
-function useTheme(): [string, React.Dispatch<React.SetStateAction<string>>] {
-  const [theme, setTheme] = useState(() => {
-    if (typeof window === 'undefined') return 'light'
-    const saved = localStorage.getItem('rj-theme')
-    if (saved) return saved
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-  })
+function useTheme(): [string, React.Dispatch<React.SetStateAction<string>>, boolean] {
+  const [theme, setTheme] = useState('light')
+  const [mounted, setMounted] = useState(false)
   useEffect(() => {
+    const saved = localStorage.getItem('rj-theme')
+    const initial = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')
+    setTheme(initial)
+    setMounted(true)
+  }, [])
+  useEffect(() => {
+    if (!mounted) return
     document.documentElement.dataset.theme = theme
     localStorage.setItem('rj-theme', theme)
-  }, [theme])
-  return [theme, setTheme]
+  }, [theme, mounted])
+  return [theme, setTheme, mounted]
 }
 
 // ── Live clock ──────────────────────────────────────────────────────────────
 function useClock() {
-  const [now, setNow] = useState(() => new Date())
+  const [now, setNow] = useState<Date | null>(null)
   useEffect(() => {
+    setNow(new Date())
     const id = setInterval(() => setNow(new Date()), 1000)
     return () => clearInterval(id)
   }, [])
@@ -105,42 +111,22 @@ function useClock() {
 function fmtTime(d: Date, tz: string) {
   return d.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: tz, hour12: false })
 }
-
-// ── Crosshair cursor ────────────────────────────────────────────────────────
-function Crosshair() {
-  const ref = useRef<HTMLDivElement>(null)
-  const [show, setShow] = useState(false)
-  const showRef = useRef(false)
-  useEffect(() => {
-    const isFine = window.matchMedia('(pointer: fine)').matches
-    if (!isFine) return
-    const onMove = (e: MouseEvent) => {
-      if (ref.current) ref.current.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`
-      if (!showRef.current) { showRef.current = true; setShow(true) }
-    }
-    const onLeave = () => { showRef.current = false; setShow(false) }
-    window.addEventListener('mousemove', onMove)
-    window.addEventListener('mouseleave', onLeave)
-    return () => {
-      window.removeEventListener('mousemove', onMove)
-      window.removeEventListener('mouseleave', onLeave)
-    }
-  }, [])
-  return <div ref={ref} className={'cursor' + (show ? ' show' : '')} />
-}
+const TIME_PLACEHOLDER = '--:--:--'
 
 // ── Nav ─────────────────────────────────────────────────────────────────────
-function Nav({ theme, setTheme }: { theme: string; setTheme: (t: string) => void }) {
+function Nav({ theme, setTheme, mounted }: { theme: string; setTheme: (t: string) => void; mounted: boolean }) {
   const now = useClock()
   return (
+    <>
+      <div className="nav-blur" aria-hidden="true" />
     <nav className="nav">
       <div className="nav-mark mono">
         <span className="dot" />
         <span>RJ — Portfolio / 2026</span>
       </div>
       <div className="nav-clock mono tnum">
-        <span><span className="k">LAX</span> {fmtTime(now, 'America/Los_Angeles')}</span>
-        <span><span className="k">NYC</span> {fmtTime(now, 'America/New_York')}</span>
+        <span><span className="k">LAX</span> {now ? fmtTime(now, 'America/Los_Angeles') : TIME_PLACEHOLDER}</span>
+        <span><span className="k">NYC</span> {now ? fmtTime(now, 'America/New_York') : TIME_PLACEHOLDER}</span>
       </div>
       <div className="nav-right mono">
         <a href="#work">Work</a>
@@ -148,10 +134,11 @@ function Nav({ theme, setTheme }: { theme: string; setTheme: (t: string) => void
         <a href="#contact">Contact</a>
         <button className="theme-btn" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} aria-label="Toggle theme">
           <span className="sw" />
-          <span>{theme === 'dark' ? 'Dark' : 'Light'}</span>
+          <span suppressHydrationWarning>{mounted ? (theme === 'dark' ? 'Dark' : 'Light') : 'Light'}</span>
         </button>
       </div>
     </nav>
+    </>
   )
 }
 
@@ -195,7 +182,7 @@ function Hero() {
       </div>
       <div className="hero-foot">
         <div className="role">
-          <b>{CONTENT.role}</b> — Currently SDE II at Amazon, working on distributed agent workflows and ML experimentation. Previously Kanopy. {CONTENT.edu}.
+          <b>{CONTENT.role}</b> — Now CPO &amp; software lead at Warp Lab, shipping a private edge AI appliance. Previously SDE II at Amazon and full-stack engineer at Kanopy. {CONTENT.edu}.
         </div>
         <div className="now">
           <span className="pulse" /> Available — Q2 2026
@@ -382,24 +369,25 @@ function Contact() {
 // ── Footer ──────────────────────────────────────────────────────────────────
 function Footer() {
   const now = useClock()
+  const year = now ? now.getFullYear() : 2026
+  const day = now ? String(now.getDate()).padStart(2, '0') : '01'
   return (
     <footer className="footer">
-      <div className="a">© {now.getFullYear()} — Romain Jouffret</div>
+      <div className="a" suppressHydrationWarning>© {year} — Romain Jouffret</div>
       <div className="b">Designed &amp; built in code · No frameworks for the chrome · 2026</div>
-      <div className="c tnum">v 2.6.{String(now.getDate()).padStart(2, '0')}</div>
+      <div className="c tnum" suppressHydrationWarning>v 2.6.{day}</div>
     </footer>
   )
 }
 
 // ── App ─────────────────────────────────────────────────────────────────────
 export default function App() {
-  const [theme, setTheme] = useTheme()
+  const [theme, setTheme, mounted] = useTheme()
 
   return (
     <>
       <ReadingProgress />
-      <Crosshair />
-      <Nav theme={theme} setTheme={setTheme} />
+      <Nav theme={theme} setTheme={setTheme} mounted={mounted} />
       <div style={{ paddingInline: '20px' }}>
         <main>
           <Hero />

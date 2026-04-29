@@ -22,7 +22,7 @@ export default function ExperiencePage() {
           <h1 className="page-title">Full<br />experience.</h1>
           <div className="page-sub">
             <span>Complete chronology — work, education, freelance</span>
-            <span>13 entries</span>
+            <span>14 entries</span>
           </div>
         </div>
 
@@ -35,14 +35,33 @@ export default function ExperiencePage() {
           </div>
 
           <article className="role-card">
-            <div className="yrs">10/2024 — Current</div>
+            <div className="yrs">2025 — Current</div>
             <div className="body">
-              <h3 className="ttl">Software Development Engineer II <span className="co">Amazon</span></h3>
+              <h3 className="ttl">Chief Product Officer &amp; Software Lead <span className="co">Warp Lab</span></h3>
               <ul>
-                <li>Designed and implemented distributed agent workflows automating xBR operational pipelines, reclaiming 4+ hours of PM bandwidth weekly and improving cross-service data validation accuracy.</li>
-                <li>Developed and deployed ML-driven experiments for Marketing &amp; Discoverability using AWS Lambda, Python, and internal experimentation frameworks — enhancing personalization and merchandising optimization for millions of customers.</li>
-                <li>Acted as Privacy Bar Raiser, conducting security audits, driving compliance initiatives, and mentoring teams on data governance, GDPR alignment, and secure software design principles.</li>
+                <li>Lead product and engineering for a three-chip edge AI appliance pairing a routing ASIC for hardware-enforced WAN/LAN isolation, a custom ARM SoC for application services, and an NVIDIA Jetson module dedicated to AI inference — all integrated on a single hybrid PCB.</li>
+                <li>Architected the system around a Nextcloud headless backend running on the ARM SoC (PHP-FPM, Nginx, PostgreSQL, Redis in Docker), with all interaction flowing through WebDAV and OCS REST APIs consumed by custom Flutter and React frontends.</li>
+                <li>Designed the AI surface on Jetson — private on-device LLM inference, embeddings, and vision — connected to the ARM SoC over a low-latency PCIe bus and exposed to Home Assistant for natural-language smart-home control over Zigbee, Z-Wave, Matter, and Thread.</li>
+                <li>Own the full software stack end-to-end: edge platform services, inference engine, AppAPI external apps (Python / Go / Node.js), CI/CD pipelines, and consumer-facing UX — bridging hardware integration, ML deployment, and product strategy.</li>
+                <li>Drive roadmap, architecture review, and security posture — defining a defense-in-depth design where firewall rules live in silicon and AI never leaves the device.</li>
+              </ul>
+            </div>
+            <div className="meta-side">
+              <div><span className="k">Location</span><span className="v">Costa Mesa, CA</span></div>
+              <div><span className="k">Stack</span><span className="v">Jetson · ARM · Python · TypeScript · Nextcloud · LLMs · Docker</span></div>
+            </div>
+          </article>
+
+          <article className="role-card">
+            <div className="yrs">10/2024 — 03/2026</div>
+            <div className="body">
+              <h3 className="ttl">Sr. Software Development Engineer <span className="co">Amazon</span></h3>
+              <ul>
+                <li>Developed scalable microservices and ETL pipelines using AWS Lambda, Python, and internal experimentation frameworks to process high-volume workloads across distributed systems.</li>
+                <li>Deployed ML-driven experiments in SageMaker improving personalization and merchandizing for millions of users, leveraging event-driven cloud infrastructure.</li>
+                <li>Designed and maintained scalable backend data pipelines supporting distributed services, improving cross-system data integrity and throughput.</li>
                 <li>Collaborated with cross-functional teams to architect scalable cloud microservices and improve system reliability (SLA 99.99%) under high-traffic workloads.</li>
+                <li>Acted as Privacy Bar Raiser, conducting security audits, driving compliance initiatives, and mentoring teams on data governance, GDPR alignment, and secure software design principles.</li>
               </ul>
             </div>
             <div className="meta-side">
@@ -54,13 +73,13 @@ export default function ExperiencePage() {
           <article className="role-card">
             <div className="yrs">02/2021 — 10/2024</div>
             <div className="body">
-              <h3 className="ttl">Software Development Engineer I <span className="co">Kanopy</span></h3>
+              <h3 className="ttl">Full Stack Engineer <span className="co">Kanopy</span></h3>
               <ul>
                 <li>Architected fault-tolerant serverless data ingestion systems in TypeScript (Nest.js) and AWS Lambda, achieving 98% reliability processing external supplier content.</li>
                 <li>Optimized cloud storage and post-processing pipelines using AWS S3 and ECS, cutting latency and improving file delivery times by &gt;60%.</li>
                 <li>Deployed scalable containerized services with Docker and AWS ECS, reducing system errors from 2,000+ per day to near zero post-deployment.</li>
                 <li>Automated video captioning pipelines with Nuxt.js, Python and FFmpeg, reducing manual editing time by 80% and streamlining accessibility workflows.</li>
-                <li>Engineered API synchronization microservices integrating multiple third-party data sources, improving data throughput and operational efficiency by 4+ hours per user daily.</li>
+                <li>Engineered 0-to-1 API synchronization microservices integrating multiple third-party data sources, improving data throughput and operational efficiency by 4+ hours per user daily.</li>
                 <li>Redesigned versioning and asset management systems, improving content publication throughput by 150% YoY and ensuring CI/CD release stability.</li>
               </ul>
             </div>

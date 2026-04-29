@@ -120,6 +120,19 @@ body { min-height: 100vh; }
   mix-blend-mode: difference;
   color: white;
 }
+.nav-blur {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 84px;
+  z-index: 49;
+  pointer-events: none;
+  background: color-mix(in oklch, var(--bg) 70%, transparent);
+  backdrop-filter: blur(22px) saturate(1.5);
+  -webkit-backdrop-filter: blur(22px) saturate(1.5);
+  border-bottom: 1px solid color-mix(in oklch, var(--rule) 60%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, #000 70%, transparent);
+  mask-image: linear-gradient(to bottom, #000 70%, transparent);
+}
 .nav > * { pointer-events: auto; }
 .nav-mark { display: flex; gap: 8px; align-items: center; }
 .nav-mark .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); display: inline-block; }
