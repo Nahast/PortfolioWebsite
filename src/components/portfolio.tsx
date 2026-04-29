@@ -224,9 +224,8 @@ function About() {
         </aside>
         <p className={'about-body reveal' + (seen ? ' in' : '')}>
           {CONTENT.about.body.map((seg, i) => {
-            if (seg.hl) return <span key={i} className="hl">{seg.t}</span>
-            if (seg.strong) return <b key={i} style={{ fontWeight: 500 }}>{seg.t}</b>
-            if (seg.muted) return <span key={i} className="accent">{seg.t}</span>
+            if ('hl' in seg && seg.hl) return <span key={i} className="hl">{seg.t}</span>
+            if ('strong' in seg && seg.strong) return <b key={i} style={{ fontWeight: 500 }}>{seg.t}</b>
             return <span key={i}>{seg.t}</span>
           })}
         </p>
