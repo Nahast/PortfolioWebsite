@@ -55,7 +55,7 @@ const CONTENT = {
     links: [
       { l: 'Email', v: 'romain.jouffret31@gmail.com' },
       { l: 'Phone', v: '+1 (949) 430-1149' },
-      { l: 'LinkedIn', v: 'in/romainjouffret' },
+      { l: 'LinkedIn', v: 'in/romainjouffret', href: 'https://www.linkedin.com/in/romainjouffret' },
       { l: 'Full experience', v: 'View — all roles & education ↗', href: '/experience' },
     ],
   },
@@ -186,7 +186,7 @@ function Hero() {
           <div className="a">— Portfolio / 2026.04</div>
           <div className="b">Software Engineer · USA</div>
           <div className="c">Index — 08 sections</div>
-          <div className="d">Open to opportunities ↗</div>
+          <a href="https://www.linkedin.com/in/romainjouffret" target="_blank" rel="noopener noreferrer" className="d">Open to opportunities ↗</a>
         </div>
         <h1 className={'hero-name' + (inMark ? ' in' : '')}>
           <span className="line"><span className={'word' + (in1 ? ' in' : '')}>{CONTENT.name[0]}</span></span>

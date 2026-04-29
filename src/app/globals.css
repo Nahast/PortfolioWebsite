@@ -64,7 +64,7 @@ html, body {
 
 body { min-height: 100vh; }
 
-@media (pointer: fine) { body { cursor: none; } }
+@media (pointer: fine) { *, *::before, *::after { cursor: none; } }
 
 ::selection { background: var(--accent); color: var(--accent-ink); }
 
@@ -169,7 +169,8 @@ body { min-height: 100vh; }
 .hero-tag .a { grid-column: span 3; }
 .hero-tag .b { grid-column: span 3; }
 .hero-tag .c { grid-column: span 3; }
-.hero-tag .d { grid-column: span 3; text-align: right; color: var(--ink); }
+.hero-tag .d { grid-column: span 3; text-align: right; color: var(--ink); text-decoration: none; transition: opacity 180ms var(--ease); }
+.hero-tag .d:hover { opacity: 0.6; }
 
 .hero-name {
   font-weight: 500;
