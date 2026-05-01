@@ -22,7 +22,7 @@ export default function ExperiencePage() {
           <h1 className="page-title">Full<br />experience.</h1>
           <div className="page-sub">
             <span>Complete chronology — work, education, freelance</span>
-            <span>14 entries</span>
+            <span>15 entries</span>
           </div>
         </div>
 
@@ -35,20 +35,36 @@ export default function ExperiencePage() {
           </div>
 
           <article className="role-card">
-            <div className="yrs">2025 — Current</div>
+            <div className="yrs">2026 — Current</div>
+            <div className="body">
+              <h3 className="ttl">Software Engineer <span className="co">Zapier</span></h3>
+              <ul>
+                <li>Software engineering on Zapier&apos;s automation platform — full-time role taken after the Amazon layoff.</li>
+                <li>Contributing to Warp Lab evenings and weekends; committed to going full-time on Warp Lab post-funding.</li>
+              </ul>
+            </div>
+            <div className="meta-side">
+              <div><span className="k">Location</span><span className="v">Remote, CA</span></div>
+              <div><span className="k">Stack</span><span className="v">TypeScript · Python · Cloud</span></div>
+            </div>
+          </article>
+
+          <article className="role-card">
+            <div className="yrs">2026 — Current</div>
             <div className="body">
               <h3 className="ttl">Chief Product Officer &amp; Software Lead <span className="co">Warp Lab</span></h3>
               <ul>
-                <li>Lead product and engineering for a three-chip edge AI appliance pairing a routing ASIC for hardware-enforced WAN/LAN isolation, a custom ARM SoC for application services, and an NVIDIA Jetson module dedicated to AI inference — all integrated on a single hybrid PCB.</li>
-                <li>Architected the system around a Nextcloud headless backend running on the ARM SoC (PHP-FPM, Nginx, PostgreSQL, Redis in Docker), with all interaction flowing through WebDAV and OCS REST APIs consumed by custom Flutter and React frontends.</li>
-                <li>Designed the AI surface on Jetson — private on-device LLM inference, embeddings, and vision — connected to the ARM SoC over a low-latency PCIe bus and exposed to Home Assistant for natural-language smart-home control over Zigbee, Z-Wave, Matter, and Thread.</li>
-                <li>Own the full software stack end-to-end: edge platform services, inference engine, AppAPI external apps (Python / Go / Node.js), CI/CD pipelines, and consumer-facing UX — bridging hardware integration, ML deployment, and product strategy.</li>
-                <li>Drive roadmap, architecture review, and security posture — defining a defense-in-depth design where firewall rules live in silicon and AI never leaves the device.</li>
+                <li>Building an on-prem AI-powered appliance that privately manages network, storage, and smart home — keeping data on device instead of in the cloud. Started in February 2026 and already have a working prototype.</li>
+                <li>Own the software stack end-to-end. Wrote the system backend on a Nextcloud headless layer (PostgreSQL, Redis, Docker Compose) and the containerized application stack — backend logic in Python and TypeScript, native mobile in Flutter, web dashboard in React.</li>
+                <li>Designed the AI surface: LLaMA 3.1 running locally through Ollama and TensorRT-LLM for optimized on-device inference — natural-language setup, voice, vision, and smart-home control via Home Assistant across Zigbee, Z-Wave, Matter and Thread, with no cloud dependency.</li>
+                <li>Working prototype today: a Raspberry Pi 5 running OpenWrt for routing, an NVIDIA Jetson Orin running the full containerized stack, and a managed switch with a Realtek/MediaTek routing ASIC — all wired together and running the complete software stack end to end.</li>
+                <li>Next hardware step is a custom PCB with an ARM processor, AI module, and a dedicated routing ASIC that physically separates WAN and LAN traffic at the board level.</li>
+                <li>Use Claude Code with MCP integrations as the primary AI dev tool — letting a lean founding team maintain a development velocity that would typically require significantly more headcount.</li>
               </ul>
             </div>
             <div className="meta-side">
               <div><span className="k">Location</span><span className="v">Costa Mesa, CA</span></div>
-              <div><span className="k">Stack</span><span className="v">Jetson · ARM · Python · TypeScript · Nextcloud · LLMs · Docker</span></div>
+              <div><span className="k">Stack</span><span className="v">LLaMA 3.1 · Ollama · TensorRT-LLM · Nextcloud · OpenWrt · Jetson · Docker</span></div>
             </div>
           </article>
 
