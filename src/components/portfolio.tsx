@@ -6,39 +6,42 @@ import ReadingProgress from './reading-progress'
 // ── Content ─────────────────────────────────────────────────────────────────
 const CONTENT = {
   name: ['Romain', 'Jouffret'],
-  role: 'Software Engineer',
-  tagline: 'Shaping the future of AI & data',
+  role: 'Software Engineer · Founder',
+  tagline: 'On-prem AI, instead of the cloud.',
   edu: 'M.Eng Computer Science · EPITA',
-  location: 'Irvine, CA',
+  location: 'Costa Mesa, CA',
   about: {
     body: [
-      { t: 'Software engineer building ' },
-      { t: 'intelligent, lightning-fast', hl: true },
-      { t: ' systems. Now CPO and software lead at ' },
+      { t: 'Software engineer + founder. CPO and software lead at ' },
       { t: 'Warp Lab', strong: true },
-      { t: ', shipping a private edge AI appliance. Previously SDE II at ' },
+      { t: ', building a ' },
+      { t: 'private, on-prem AI appliance', hl: true },
+      { t: ' that replaces the cloud stack. Currently shipping at ' },
+      { t: 'Zapier', strong: true },
+      { t: '; previously ' },
       { t: 'Amazon', strong: true },
-      { t: ' creating distributed services, ML experimentation.' },
+      { t: '.' },
     ],
     meta: [
       { k: 'Now', v: 'CPO & Software Lead — Warp Lab' },
-      { k: 'Based', v: 'Costa Mesa / Santa Monica, CA' },
+      { k: 'Day job', v: 'Software Engineer — Zapier' },
+      { k: 'Building', v: 'Replaces cloud stack with an on-prem AI appliance' },
+      { k: 'Based', v: 'Costa Mesa, CA → SF (next)' },
       { k: 'Education', v: 'M.Eng CS — EPITA' },
-      { k: 'Languages', v: 'English · French (bilingual)' },
     ],
   },
   skills: [
-    { idx: '01', head: 'Cloud / AWS', desc: 'Lambda, ECS, S3 — fault-tolerant serverless and containerized services.', stack: ['AWS Lambda', 'ECS', 'S3', 'Docker'] },
-    { idx: '02', head: 'Backend services', desc: 'Distributed microservices, job systems, third-party API integrations.', stack: ['TypeScript', 'Nest.js', 'Node', 'Python'] },
-    { idx: '03', head: 'ML / AI', desc: 'ML-driven experiments, agent workflows, data pipelines and integration.', stack: ['Python', 'ML pipelines', 'Agents'] },
-    { idx: '04', head: 'Frontend / UI', desc: 'Product UIs and operations tooling for media and content platforms.', stack: ['Vue.js', 'Nuxt.js', 'Next.js', 'Django'] },
-    { idx: '05', head: 'Languages', desc: 'Production work across web, systems and scripting languages.', stack: ['TS / JS', 'Python', 'C / C++ / C#', 'Java', 'PHP', 'SQL'] },
-    { idx: '06', head: 'Tooling', desc: 'Daily-driver workflow, REST APIs, CI/CD and observability stack.', stack: ['Git', 'Docker', 'Jira', 'REST'] },
-    { idx: '07', head: 'Practice', desc: 'Privacy Bar Raiser, security audits, GDPR, secure design mentoring.', stack: ['Scrum', 'Agile', 'Privacy'] },
-    { idx: '08', head: 'Domains', desc: 'E-commerce, streaming media, content management, telecom.', stack: ['Marketing', 'OTT', 'CMS'] },
+    { idx: '01', head: 'Edge AI', desc: 'Private, on-device AI — built so data never has to leave the box.', stack: ['LLMs', 'Inference', 'Vision'] },
+    { idx: '02', head: 'Product & UX', desc: 'Turning a complex hardware + AI stack into something a non-technical user can set up in minutes.', stack: ['Roadmap', 'UX', 'Onboarding'] },
+    { idx: '03', head: 'Software', desc: 'Backend services, mobile and web — the full software surface of the product.', stack: ['Backend', 'Mobile', 'Web'] },
+    { idx: '04', head: 'Hardware integration', desc: 'Bringing the software up on real boards and steering it toward custom silicon.', stack: ['Edge', 'Networking', 'Custom PCB'] },
+    { idx: '05', head: 'Cloud (legacy)', desc: 'Years of fault-tolerant serverless and containerized services from Amazon and Kanopy.', stack: ['AWS', 'Lambda', 'ECS', 'Docker'] },
+    { idx: '06', head: 'AI-native engineering', desc: 'Use AI dev tools as a daily driver to ship at lean-team velocity.', stack: ['Claude Code', 'Copilot'] },
+    { idx: '07', head: 'Languages', desc: 'Production work across web, systems and scripting languages.', stack: ['TS / JS', 'Python', 'C / C++ / C#', 'Java', 'SQL'] },
+    { idx: '08', head: 'Practice', desc: 'Privacy-by-design and security mindset — formerly Privacy Bar Raiser at Amazon.', stack: ['Privacy', 'Security', 'GDPR'] },
   ],
   projects: [
-    { num: '01', title: 'Warp Lab — Edge AI Appliance', year: '2025 — present', desc: 'Three-chip edge AI appliance pairing a routing ASIC for hardware-enforced WAN/LAN isolation, a custom ARM SoC for application services, and an NVIDIA Jetson module for AI inference. Runs private LLMs, embeddings and vision on-device behind a Nextcloud headless backend with Home Assistant integration.', tags: ['Jetson', 'ARM', 'LLMs', 'Nextcloud'], ph: 'Warp Lab — three-chip architecture' },
+    { num: '01', title: 'Warp Lab — On-prem AI Appliance', year: '2026 — present', desc: 'A single appliance that replaces your router, NAS, and smart-home hub with one private box running everything locally — including an AI assistant that configures the network, manages files, and controls home automation. Working prototype today; custom hardware in progress.', tags: ['Edge AI', 'Privacy', 'Hardware'], ph: 'Warp Lab — on-prem AI appliance' },
     { num: '02', title: 'xBR Agent Workflows', year: '2024 — 2026', desc: 'Distributed agent workflows automating xBR operational pipelines at Amazon. Reclaimed 4+ hours of PM bandwidth weekly and improved cross-service data validation accuracy.', tags: ['Agents', 'AWS', 'Distributed'], ph: 'xBR — workflow graph' },
     { num: '03', title: 'Marketing & Discoverability ML', year: '2025', desc: 'ML-driven experiments deployed on AWS Lambda + Python, plugged into internal experimentation frameworks. Personalization and merchandising optimization for millions of customers.', tags: ['ML', 'Lambda', 'Python'], ph: 'Experimentation — ML rollout' },
     { num: '04', title: 'Serverless Ingestion @ Kanopy', year: '2021 — 2024', desc: 'Architected fault-tolerant serverless ingestion in TypeScript (Nest.js) and AWS Lambda. 98% reliability across external supplier content.', tags: ['TypeScript', 'Nest.js', 'Lambda'], ph: 'Ingestion — pipeline diagram' },
@@ -47,10 +50,10 @@ const CONTENT = {
     { num: '07', title: 'Asset Versioning Revamp', year: '2024', desc: 'Redesigned versioning and asset management systems. Improved publication throughput by 150% YoY and stabilized the CI/CD release pipeline.', tags: ['Versioning', 'CI/CD', 'Throughput'], ph: 'Bundler — throughput chart' },
   ],
   experience: [
-    { yrs: '2025 — present', role: 'CPO & Software Lead', co: 'Warp Lab', scope: 'Three-chip edge AI appliance: routing ASIC + ARM SoC + Jetson, private LLM inference, Nextcloud headless backend.', loc: 'Costa Mesa, CA' },
+    { yrs: '2026 — present', role: 'Software Engineer', co: 'Zapier', scope: 'Software engineering on the automation platform; contributing to Warp Lab evenings and weekends.', loc: 'Remote, CA' },
+    { yrs: '2026 — present', role: 'CPO & Software Lead', co: 'Warp Lab', scope: 'Building an on-prem AI appliance that privately manages your network, storage, and smart home — keeping data on device instead of in the cloud.', loc: 'Costa Mesa, CA' },
     { yrs: 'Oct 2024 — Mar 2026', role: 'Sr. Software Development Engineer', co: 'Amazon', scope: 'Distributed microservices and ETL on AWS Lambda, ML-driven experiments in SageMaker, Privacy Bar Raiser.', loc: 'Santa Monica, CA' },
     { yrs: 'Feb 2021 — Oct 2024', role: 'Full Stack Engineer', co: 'Kanopy', scope: 'Serverless ingestion, ECS services, captioning automation, asset versioning.', loc: 'San Francisco, CA' },
-    { yrs: 'Oct 2019 — May 2021', role: 'Project Manager', co: 'HeadMind', scope: 'Telecom automation for 4M+ devices; QA, DevOps, and CI/CD frameworks.', loc: 'Paris, FR' },
   ],
   contact: {
     headline: ["Let's", 'build something', 'exact.'],
@@ -171,9 +174,9 @@ function Hero() {
       <div ref={ref}>
         <div className="hero-tag">
           <div className="a">— Portfolio / 2026.04</div>
-          <div className="b">Software Engineer · USA</div>
+          <div className="b">Founder · Software Engineer</div>
           <div className="c">Index — 08 sections</div>
-          <a href="https://www.linkedin.com/in/romainjouffret" target="_blank" rel="noopener noreferrer" className="d">Open to opportunities ↗</a>
+          <a href="mailto:romain.jouffret31@gmail.com" className="d">Investor inquiries ↗</a>
         </div>
         <h1 className={'hero-name' + (inMark ? ' in' : '')}>
           <span className="line"><span className={'word' + (in1 ? ' in' : '')}>{CONTENT.name[0]}</span></span>
@@ -182,10 +185,10 @@ function Hero() {
       </div>
       <div className="hero-foot">
         <div className="role">
-          <b>{CONTENT.role}</b> — Now CPO &amp; software lead at Warp Lab, shipping a private edge AI appliance. Previously SDE II at Amazon and full-stack engineer at Kanopy. {CONTENT.edu}.
+          <b>{CONTENT.role}</b> — CPO &amp; software lead at <b>Warp Lab</b>, building an on-prem AI appliance that replaces your router, NAS, and smart-home hub with one private box. Day job at <b>Zapier</b>. {CONTENT.edu}.
         </div>
         <div className="now">
-          <span className="pulse" /> Available — Q2 2026
+          <span className="pulse" /> Building Warp Lab — Q2 2026
         </div>
         <div className="scroll">
           <span>Scroll</span>
@@ -212,7 +215,7 @@ function About() {
   const [ref, seen] = useReveal<HTMLDivElement>(0.2)
   return (
     <section id="about" className="sec about shell">
-      <SecMeta num="01" label="About — Origin & focus" desc="Who I am, what I work on, and how I work." />
+      <SecMeta num="01" label="About — Founder + builder" desc="Who I am, what I work on, and how I work." />
       <div className="grid-12" ref={ref}>
         <aside className="about-side">
           {CONTENT.about.meta.map((m, i) => (
@@ -261,7 +264,7 @@ function SkillCell({ s, delay }: { s: typeof CONTENT.skills[number]; delay: numb
 function Work() {
   return (
     <section id="work" className="sec work shell">
-      <SecMeta num="03" label="Selected work — 2023 → 2026" desc="A short list. Press any item for detail." />
+      <SecMeta num="03" label="Selected work — 2021 → 2026" desc="A short list. Press any item for detail." />
       <div className="work-list">
         {CONTENT.projects.map((p, i) => <Project key={p.num} p={p} i={i} />)}
       </div>

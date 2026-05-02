@@ -22,7 +22,7 @@ export default function ExperiencePage() {
           <h1 className="page-title">Full<br />experience.</h1>
           <div className="page-sub">
             <span>Complete chronology — work, education, freelance</span>
-            <span>14 entries</span>
+            <span>15 entries</span>
           </div>
         </div>
 
@@ -35,20 +35,33 @@ export default function ExperiencePage() {
           </div>
 
           <article className="role-card">
-            <div className="yrs">2025 — Current</div>
+            <div className="yrs">2026 — Current</div>
+            <div className="body">
+              <h3 className="ttl">Software Engineer <span className="co">Zapier</span></h3>
+              <ul>
+                <li>Software engineering on Zapier&apos;s automation platform.</li>
+                <li>Contributing to Warp Lab evenings and weekends; committed to going full-time on Warp Lab post-funding.</li>
+              </ul>
+            </div>
+            <div className="meta-side">
+              <div><span className="k">Location</span><span className="v">Remote, CA</span></div>
+              <div><span className="k">Stack</span><span className="v">TypeScript · Python · Cloud</span></div>
+            </div>
+          </article>
+
+          <article className="role-card">
+            <div className="yrs">2026 — Current</div>
             <div className="body">
               <h3 className="ttl">Chief Product Officer &amp; Software Lead <span className="co">Warp Lab</span></h3>
               <ul>
-                <li>Lead product and engineering for a three-chip edge AI appliance pairing a routing ASIC for hardware-enforced WAN/LAN isolation, a custom ARM SoC for application services, and an NVIDIA Jetson module dedicated to AI inference — all integrated on a single hybrid PCB.</li>
-                <li>Architected the system around a Nextcloud headless backend running on the ARM SoC (PHP-FPM, Nginx, PostgreSQL, Redis in Docker), with all interaction flowing through WebDAV and OCS REST APIs consumed by custom Flutter and React frontends.</li>
-                <li>Designed the AI surface on Jetson — private on-device LLM inference, embeddings, and vision — connected to the ARM SoC over a low-latency PCIe bus and exposed to Home Assistant for natural-language smart-home control over Zigbee, Z-Wave, Matter, and Thread.</li>
-                <li>Own the full software stack end-to-end: edge platform services, inference engine, AppAPI external apps (Python / Go / Node.js), CI/CD pipelines, and consumer-facing UX — bridging hardware integration, ML deployment, and product strategy.</li>
-                <li>Drive roadmap, architecture review, and security posture — defining a defense-in-depth design where firewall rules live in silicon and AI never leaves the device.</li>
+                <li>Building an on-prem AI appliance that privately manages your network, storage, and smart home — keeping data on device instead of in the cloud.</li>
+                <li>Lead product and own the software stack end-to-end. Took the company from idea to a working prototype with a small founding team.</li>
+                <li>Driving the product roadmap, the user experience, and the engineering velocity needed to ship custom hardware on a lean timeline.</li>
               </ul>
             </div>
             <div className="meta-side">
               <div><span className="k">Location</span><span className="v">Costa Mesa, CA</span></div>
-              <div><span className="k">Stack</span><span className="v">Jetson · ARM · Python · TypeScript · Nextcloud · LLMs · Docker</span></div>
+              <div><span className="k">Focus</span><span className="v">Product · Software · AI</span></div>
             </div>
           </article>
 
