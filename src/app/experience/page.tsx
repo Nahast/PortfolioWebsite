@@ -39,7 +39,7 @@ export default function ExperiencePage() {
             <div className="body">
               <h3 className="ttl">Software Engineer <span className="co">Zapier</span></h3>
               <ul>
-                <li>Software engineering on Zapier&apos;s automation platform — full-time role taken after the Amazon layoff.</li>
+                <li>Software engineering on Zapier&apos;s automation platform.</li>
                 <li>Contributing to Warp Lab evenings and weekends; committed to going full-time on Warp Lab post-funding.</li>
               </ul>
             </div>
