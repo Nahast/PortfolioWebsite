@@ -54,17 +54,14 @@ export default function ExperiencePage() {
             <div className="body">
               <h3 className="ttl">Chief Product Officer &amp; Software Lead <span className="co">Warp Lab</span></h3>
               <ul>
-                <li>Building an on-prem AI-powered appliance that privately manages network, storage, and smart home — keeping data on device instead of in the cloud. Started in February 2026 and already have a working prototype.</li>
-                <li>Own the software stack end-to-end. Wrote the system backend on a Nextcloud headless layer (PostgreSQL, Redis, Docker Compose) and the containerized application stack — backend logic in Python and TypeScript, native mobile in Flutter, web dashboard in React.</li>
-                <li>Designed the AI surface: LLaMA 3.1 running locally through Ollama and TensorRT-LLM for optimized on-device inference — natural-language setup, voice, vision, and smart-home control via Home Assistant across Zigbee, Z-Wave, Matter and Thread, with no cloud dependency.</li>
-                <li>Working prototype today: a Raspberry Pi 5 running OpenWrt for routing, an NVIDIA Jetson Orin running the full containerized stack, and a managed switch with a Realtek/MediaTek routing ASIC — all wired together and running the complete software stack end to end.</li>
-                <li>Next hardware step is a custom PCB with an ARM processor, AI module, and a dedicated routing ASIC that physically separates WAN and LAN traffic at the board level.</li>
-                <li>Use Claude Code with MCP integrations as the primary AI dev tool — letting a lean founding team maintain a development velocity that would typically require significantly more headcount.</li>
+                <li>Building an on-prem AI appliance that privately manages your network, storage, and smart home — keeping data on device instead of in the cloud.</li>
+                <li>Lead product and own the software stack end-to-end. Took the company from idea to a working prototype with a small founding team.</li>
+                <li>Driving the product roadmap, the user experience, and the engineering velocity needed to ship custom hardware on a lean timeline.</li>
               </ul>
             </div>
             <div className="meta-side">
               <div><span className="k">Location</span><span className="v">Costa Mesa, CA</span></div>
-              <div><span className="k">Stack</span><span className="v">LLaMA 3.1 · Ollama · TensorRT-LLM · Nextcloud · OpenWrt · Jetson · Docker</span></div>
+              <div><span className="k">Focus</span><span className="v">Product · Software · AI</span></div>
             </div>
           </article>
 
