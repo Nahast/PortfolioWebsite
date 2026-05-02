@@ -12,22 +12,21 @@ const CONTENT = {
   location: 'Costa Mesa, CA',
   about: {
     body: [
-      { t: 'Software engineer + founder. CPO and software lead at ' },
+      { t: 'Software engineer, founder and CPO at ' },
       { t: 'Warp Lab', strong: true },
       { t: ', building a ' },
       { t: 'private, on-prem AI appliance', hl: true },
-      { t: ' that replaces the cloud stack. Currently shipping at ' },
-      { t: 'Zapier', strong: true },
-      { t: '; previously ' },
+      { t: ' that replaces the cloud stack.' },
+      { t: ' Previously at ' },
       { t: 'Amazon', strong: true },
       { t: '.' },
     ],
     meta: [
-      { k: 'Now', v: 'CPO & Software Lead — Warp Lab' },
-      { k: 'Day job', v: 'Software Engineer — Zapier' },
+      { k: 'Now', v: 'CPO & Founder — Warp Lab' },
       { k: 'Building', v: 'Replaces cloud stack with an on-prem AI appliance' },
-      { k: 'Based', v: 'Costa Mesa, CA → SF (next)' },
+      { k: 'Based', v: 'Costa Mesa, CA' },
       { k: 'Education', v: 'M.Eng CS — EPITA' },
+      { k: 'Awards', v:'Second Runner-up in Amazon Private Brands Summer Hackathon' },
     ],
   },
   skills: [
