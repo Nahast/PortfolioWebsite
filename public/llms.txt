@@ -1,0 +1,29 @@
+# Romain Jouffret
+
+> Software Engineer and Founder. CPO & software lead at Warp Lab, building a
+> private, on-prem AI appliance that replaces the cloud stack (router, NAS,
+> smart-home hub) with one local box. Day job at Zapier. Previously Sr.
+> Software Development Engineer at Amazon and Full Stack Engineer at Kanopy.
+> M.Eng Computer Science, EPITA. Based in Costa Mesa, CA.
+
+## Portfolio
+
+- [Portfolio — home](https://romainjouffret.com/): About, selected work 2021–2026, skills, experience, and contact.
+- [Full experience & education](https://romainjouffret.com/experience/): Complete role history and academic background.
+
+## Current venture
+
+- [Warp Lab](https://warp-lab.ai): On-prem AI appliance — a single private box that replaces your router, NAS, and smart-home hub with a local AI assistant. Working prototype today; custom hardware in progress.
+
+## Selected case studies & employers
+
+- [Amazon — Private Brands](https://www.amazon.com/amazonbasics): Sr. Software Development Engineer (Oct 2024 — Mar 2026). Distributed microservices and ETL on AWS Lambda, ML-driven experiments in SageMaker, Privacy Bar Raiser. Second Runner-up, Amazon Private Brands Summer Hackathon.
+- [Kanopy](https://www.kanopy.com): Full Stack Engineer (Feb 2021 — Oct 2024). Serverless ingestion in TypeScript + Nest.js + AWS Lambda (98% reliability across external suppliers), ECS containerization (cut errors from 2,000+/day to near zero), captions automation (-80% manual editing), asset versioning revamp (+150% YoY publication throughput).
+- [Zapier](https://zapier.com): Software Engineer (2026 — present). Automation platform.
+
+## Contact
+
+- Email: romain.jouffret31@gmail.com
+- LinkedIn: [in/romainjouffret](https://www.linkedin.com/in/romainjouffret)
+- Phone: +1 (949) 430-1149
+- Location: Costa Mesa, CA
