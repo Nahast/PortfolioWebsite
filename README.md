@@ -20,7 +20,7 @@ Personal portfolio website for Romain Jouffret, built with Next.js and deployed 
 ```
 src/
   app/
-    layout.tsx          # Root layout — fonts, theme init script
+    layout.tsx          # Root layout — fonts, inline theme init, shared cursor
     page.tsx            # Home page (mounts Portfolio component)
     globals.css         # Design system — tokens, sections, animations
     experience/
@@ -31,10 +31,11 @@ src/
   components/
     portfolio.tsx       # Main portfolio component (all sections)
     reading-progress.tsx
+    crosshair.tsx       # Shared pointer cursor
     tweaks-panel.tsx    # Dev-only utility (not rendered in production)
 public/
   CNAME                 # romainjouffret.com
-  theme-init.js         # Anti-FOUC theme detection script
+  llms.txt              # Plain-text profile and site summary
   uploads/              # Resume PDFs
 .github/
   workflows/
@@ -95,7 +96,7 @@ DNS propagation can take up to 48 hours. Once active, GitHub Pages will automati
 
 ## Features
 
-- **Dark / light theme** — persisted in `localStorage`, detected on first visit from `prefers-color-scheme`; anti-FOUC via a blocking inline script (`public/theme-init.js`)
+- **Dark / light theme** — persisted in `localStorage`, detected on first visit from `prefers-color-scheme`; anti-FOUC via a blocking inline script in `src/app/layout.tsx`
 - **Live clock** — shows current time in LAX and NYC in the navigation bar
 - **Scroll reveals** — sections animate in via `IntersectionObserver`
 - **Parallax** — hero section responds to scroll position

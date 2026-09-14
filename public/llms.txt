@@ -1,0 +1,26 @@
+# Romain Jouffret
+
+> Co-founder and Chief Product Officer at Warp Laboratory, Inc., leading Droplet,
+> an on-premise AI appliance for small and medium-sized businesses in regulated
+> industries. 8+ years building and scaling software, including engineering at
+> Capital Group, Amazon, and Kanopy. Former Amazon Privacy Bar Raiser.
+> M.Eng, Multimedia and Information Technology, EPITA. Based in Los Angeles, CA.
+
+## Portfolio
+
+- [Portfolio](https://romainjouffret.com/): About, selected work, recent experience, expertise, and contact.
+- [Full experience, leadership & education](https://romainjouffret.com/experience/): Complete career history and spoken languages.
+- [Résumé (PDF)](https://romainjouffret.com/uploads/Romain_Jouffret_Resume_v10.pdf): Current source résumé.
+
+## Recent experience
+
+- Warp Laboratory, Inc. — Co-founder and Chief Product Officer (Mar 2026 — present). Product strategy and execution for Droplet, with no data leaving customers' premises. Three-year lease offering and customer pilots in photo, automotive, and real estate.
+- Capital Group — Senior Full Stack Engineer, contract (Feb 2026 — Apr 2026). Internal Applications Portal: DevOps improvements, disaster recovery planning, and authentication migration to NerveCenter.
+- Amazon — Software Development Engineer II, Private Brands, Marketing & Discoverability (Oct 2024 — Mar 2026). Distributed agent workflows, ML-driven experiments, and privacy governance. Workflow automation reclaimed 4+ hours of product manager time per week.
+- Kanopy — Software Engineer I (Feb 2021 — Nov 2024). 98% supplier-file ingestion success; ECS upgrades reduced post-release errors from 2,000+ per day to near zero; title publication throughput increased by 150% year over year.
+
+## Contact
+
+- Email: romain.jouffret31@gmail.com
+- LinkedIn: [in/romainjouffret](https://www.linkedin.com/in/romainjouffret)
+- Location: Los Angeles, CA

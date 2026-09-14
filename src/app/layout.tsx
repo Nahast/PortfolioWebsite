@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
+import Crosshair from "@/components/crosshair";
 import { profile } from "@/data/profile";
 
 const geistSans = Geist({
@@ -19,6 +19,12 @@ export const metadata: Metadata = {
   description: profile.description,
 };
 
+// Inlined theme-init script content.
+// dangerouslySetInnerHTML opts out of React 19's script-resource hoisting
+// so this is treated as a plain DOM node — it runs during SSR and is never
+// touched again during client hydration, which is exactly what anti-FOUC needs.
+const THEME_SCRIPT = `(function(){try{var s=localStorage.getItem('rj-theme');document.documentElement.dataset.theme=s||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light')}catch(e){}})()`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -32,7 +38,8 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable}`}
     >
       <body>
-        <Script src="/theme-init.js" strategy="beforeInteractive" />
+        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
+        <Crosshair />
         {children}
       </body>
     </html>
