@@ -68,7 +68,7 @@ npm run build   # Outputs static files to ./out
 
 Pushes to `main` trigger the GitHub Actions workflow in [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml):
 
-1. Checks out the repo and installs Node 20
+1. Checks out the repo and installs Node 24
 2. Runs `npm ci && npm run build` — produces `./out`
 3. Uploads `./out` as a GitHub Pages artifact
 4. Deploys the artifact to GitHub Pages
