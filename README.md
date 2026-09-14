@@ -26,6 +26,8 @@ src/
     experience/
       page.tsx          # Full work & education history (static)
       experience.css    # Page-scoped styles
+  data/
+    profile.ts          # Shared career history, education, and profile links
   components/
     portfolio.tsx       # Main portfolio component (all sections)
     reading-progress.tsx
@@ -43,8 +45,8 @@ public/
 
 | Route | Description |
 |-------|-------------|
-| `/` | Main portfolio — Nav, Hero, About, Skills, Work, Contact |
-| `/experience` | Full work and education history with reading progress bar |
+| `/` | Main portfolio — About, Selected work, Experience, Expertise, Contact |
+| `/experience` | Full work history, leadership, education, and languages |
 
 ## Local Development
 
@@ -96,6 +98,12 @@ DNS propagation can take up to 48 hours. Once active, GitHub Pages will automati
 - **Dark / light theme** — persisted in `localStorage`, detected on first visit from `prefers-color-scheme`; anti-FOUC via a blocking inline script (`public/theme-init.js`)
 - **Live clock** — shows current time in LAX and NYC in the navigation bar
 - **Scroll reveals** — sections animate in via `IntersectionObserver`
-- **Parallax** — hero section and project preview cards respond to scroll position
+- **Parallax** — hero section responds to scroll position
 - **Crosshair cursor** — custom SVG cursor that tracks mouse position
 - **Responsive** — fluid gutters via `clamp()`, mobile-first layout
+
+## Updating Content
+
+Career facts and shared contact details live in `src/data/profile.ts`. Both pages use this file for role titles, dates, locations, and experience. Homepage introductions, selected work, and expertise summaries live in `src/components/portfolio.tsx`.
+
+The current content is based on `Romain_Jouffret_Resume_v10.pdf`. Its download is served from `public/uploads/`, with the URL set in `profile.resume`. When updating the résumé, update both the shared history and the homepage summaries. Keep project outcomes tied to the source résumé and preserve overlapping role dates.

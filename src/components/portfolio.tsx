@@ -1,62 +1,53 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useSyncExternalStore } from 'react'
 import ReadingProgress from './reading-progress'
+import { experience, profile, type CareerRole } from '@/data/profile'
 
 // ── Content ─────────────────────────────────────────────────────────────────
 const CONTENT = {
   name: ['Romain', 'Jouffret'],
-  role: 'Software Engineer',
-  tagline: 'Shaping the future of AI & data',
-  edu: 'M.Eng Computer Science · EPITA',
-  location: 'Irvine, CA',
   about: {
     body: [
-      { t: 'Software engineer building systems that are ' },
-      { t: 'intelligent and lightning-fast', hl: true },
-      { t: '. I work across cloud architecture, distributed computing, and ML integration — currently at ' },
-      { t: 'Amazon', strong: true },
-      { t: ', previously at Kanopy. ' },
-      { t: 'I care about correctness under load, scalable design, and shipping software that quietly does its job for millions of customers.', muted: true },
+      { t: 'I turn complex technology into ' },
+      { t: 'products people can use', hl: true },
+      { t: '. As co-founder and CPO at ' },
+      { t: 'Warp Laboratory', strong: true },
+      { t: ', I lead Droplet from concept and architecture to customer pilots. ' },
+      { t: 'My 8+ years in software span distributed systems, ML experimentation, and privacy governance, including engineering at Amazon and Kanopy.', muted: true },
     ],
     meta: [
-      { k: 'Now', v: 'SDE II — Amazon' },
-      { k: 'Based', v: 'Irvine / Santa Monica, CA' },
-      { k: 'Education', v: 'M.Eng CS — EPITA' },
-      { k: 'Languages', v: 'English · French (bilingual)' },
+      { k: 'Now', v: 'Co-founder & CPO — Warp Laboratory' },
+      { k: 'Building', v: 'Droplet · On-premise AI' },
+      { k: 'Based', v: profile.location },
+      { k: 'Education', v: 'M.Eng — EPITA' },
     ],
   },
   skills: [
-    { idx: '01', head: 'Cloud / AWS', desc: 'Lambda, ECS, S3 — fault-tolerant serverless and containerized services.', stack: ['AWS Lambda', 'ECS', 'S3', 'Docker'] },
-    { idx: '02', head: 'Backend services', desc: 'Distributed microservices, job systems, third-party API integrations.', stack: ['TypeScript', 'Nest.js', 'Node', 'Python'] },
-    { idx: '03', head: 'ML / AI', desc: 'ML-driven experiments, agent workflows, data pipelines and integration.', stack: ['Python', 'ML pipelines', 'Agents'] },
-    { idx: '04', head: 'Frontend / UI', desc: 'Product UIs and operations tooling for media and content platforms.', stack: ['Vue.js', 'Nuxt.js', 'Next.js', 'Django'] },
-    { idx: '05', head: 'Languages', desc: 'Production work across web, systems and scripting languages.', stack: ['TS / JS', 'Python', 'C / C++ / C#', 'Java', 'PHP', 'SQL'] },
-    { idx: '06', head: 'Tooling', desc: 'Daily-driver workflow, REST APIs, CI/CD and observability stack.', stack: ['Git', 'Docker', 'Jira', 'REST'] },
-    { idx: '07', head: 'Practice', desc: 'Privacy Bar Raiser, security audits, GDPR, secure design mentoring.', stack: ['Scrum', 'Agile', 'Privacy'] },
-    { idx: '08', head: 'Domains', desc: 'E-commerce, streaming media, content management, telecom.', stack: ['Marketing', 'OTT', 'CMS'] },
+    { idx: '01', head: 'Product leadership', desc: 'Product ownership from concept and architecture through execution and customer pilots.', stack: ['Strategy', 'Product operations', 'Technical leadership'] },
+    { idx: '02', head: 'AI & privacy', desc: 'On-premise AI, distributed agent workflows, and ML-driven experimentation.', stack: ['On-premise AI', 'Agents', 'ML experiments'] },
+    { idx: '03', head: 'Cloud & systems', desc: 'Distributed workflows, microservices, and reliable content-processing services.', stack: ['AWS Lambda', 'ECS', 'S3'] },
+    { idx: '04', head: 'Backend engineering', desc: 'Job systems, business tools, and integrations with third-party APIs.', stack: ['TypeScript', 'Python', 'PHP', 'NestJS'] },
+    { idx: '05', head: 'Frontend & platforms', desc: 'Content management tools, caption workflows, and smart TV interfaces.', stack: ['Vue.js', 'Nuxt.js', 'Drupal'] },
+    { idx: '06', head: 'DevOps & resilience', desc: 'Deployment improvements, disaster recovery planning, and portal authentication.', stack: ['DevOps', 'Disaster recovery', 'Authentication'] },
+    { idx: '07', head: 'Privacy governance', desc: 'Former Amazon Privacy Bar Raiser: security audits, compliance, and secure design mentoring.', stack: ['GDPR', 'Data governance', 'Secure design'] },
+    { idx: '08', head: 'Customer delivery', desc: 'Customer pilots, commercial offerings, client projects, and quality assurance.', stack: ['Pilots', 'Commercial strategy', 'QA'] },
   ],
   projects: [
-    { num: '01', title: 'xBR Agent Workflows', year: '2024 — present', desc: 'Distributed agent workflows automating xBR operational pipelines at Amazon. Reclaimed 4+ hours of PM bandwidth weekly and improved cross-service data validation accuracy.', tags: ['Agents', 'AWS', 'Distributed'], ph: 'xBR — workflow graph' },
-    { num: '02', title: 'Marketing & Discoverability ML', year: '2025', desc: 'ML-driven experiments deployed on AWS Lambda + Python, plugged into internal experimentation frameworks. Personalization and merchandising optimization for millions of customers.', tags: ['ML', 'Lambda', 'Python'], ph: 'Experimentation — ML rollout' },
-    { num: '03', title: 'Serverless Ingestion @ Kanopy', year: '2021 — 2024', desc: 'Architected fault-tolerant serverless ingestion in TypeScript (Nest.js) and AWS Lambda. 98% reliability across external supplier content.', tags: ['TypeScript', 'Nest.js', 'Lambda'], ph: 'Ingestion — pipeline diagram' },
-    { num: '04', title: 'ECS Containerization', year: '2023', desc: 'Deployed scalable containerized services with Docker + AWS ECS. Reduced system errors from 2,000+/day to near zero post-deployment.', tags: ['ECS', 'Docker', 'Reliability'], ph: 'ECS — service topology' },
-    { num: '05', title: 'Captions Automation', year: '2022', desc: 'Automated video captioning pipelines with Nuxt.js, Python and FFmpeg. Cut manual editing time by 80% and streamlined accessibility workflows.', tags: ['Nuxt.js', 'Python', 'FFmpeg'], ph: 'Captions — internal UI' },
-    { num: '06', title: 'Asset Versioning Revamp', year: '2024', desc: 'Redesigned versioning and asset management systems. Improved publication throughput by 150% YoY and stabilized the CI/CD release pipeline.', tags: ['Versioning', 'CI/CD', 'Throughput'], ph: 'Bundler — throughput chart' },
-  ],
-  experience: [
-    { yrs: 'Oct 2024 — present', role: 'Software Development Engineer II', co: 'Amazon', scope: 'Distributed agent workflows, ML experimentation, Privacy Bar Raiser.', loc: 'Santa Monica, CA' },
-    { yrs: 'Feb 2021 — Oct 2024', role: 'Software Development Engineer I', co: 'Kanopy', scope: 'Serverless ingestion, ECS services, captioning automation, asset versioning.', loc: 'San Francisco, CA' },
-    { yrs: 'Oct 2019 — May 2021', role: 'Project Manager', co: 'HeadMind', scope: 'Telecom automation for 4M+ devices; QA, DevOps, and CI/CD frameworks.', loc: 'Paris, FR' },
-    { yrs: 'Feb 2018 — Feb 2019', role: 'Backend Software Engineer', co: 'Kanopy', scope: 'PHP / Python / SQL backends, Vue.js apps for Fire TV and smart TVs.', loc: 'San Francisco, CA' },
+    { num: '01', title: 'Droplet', company: 'Warp Laboratory', year: '2026 — present', desc: 'Leading product for an on-premise AI appliance that brings modern AI to small and medium-sized businesses in regulated industries, with no data leaving their premises.', tags: ['Product strategy', 'On-premise AI', 'Privacy'], outcome: 'From concept to customer pilots', detail: 'Three-year lease offering; pilots in photo, automotive, and real estate.', roleId: 'warp-laboratory' },
+    { num: '02', title: 'Internal Applications Portal', company: 'Capital Group', year: '2026', desc: 'Delivered DevOps improvements and disaster recovery planning for the internal applications portal during a senior full stack engineering contract.', tags: ['DevOps', 'Disaster recovery', 'Authentication'], outcome: 'Portal authentication migrated', detail: 'Moved portal authentication to NerveCenter.', roleId: 'capital-group' },
+    { num: '03', title: 'Distributed agent workflows', company: 'Amazon', year: '2024 — 2026', desc: 'Automated xBR operational pipelines with distributed agent workflows, improving cross-service data validation accuracy.', tags: ['Agents', 'Distributed systems', 'Automation'], outcome: '4+ hours reclaimed each week', detail: 'Product manager time saved through workflow automation.', roleId: 'amazon' },
+    { num: '04', title: 'Marketing & Discoverability', company: 'Amazon', year: '2024 — 2026', desc: 'Built and deployed ML-driven experiments with AWS Lambda, Python, and internal experimentation frameworks for Amazon Private Brands.', tags: ['ML experiments', 'AWS Lambda', 'Python'], outcome: 'Personalization at scale', detail: 'Improved personalization and merchandising for millions of customers.', roleId: 'amazon' },
+    { num: '05', title: 'Reliable content ingestion', company: 'Kanopy', year: '2021 — 2024', desc: 'Developed the Lambda job system for external supplier files and upgraded AWS ECS services in TypeScript and NestJS.', tags: ['TypeScript', 'NestJS', 'AWS'], outcome: '98% ingestion success rate', detail: 'ECS upgrades also reduced post-release errors from 2,000+ per day to near zero.', roleId: 'kanopy-2021' },
+    { num: '06', title: 'Publishing automation', company: 'Kanopy', year: '2021 — 2024', desc: 'Revamped asset bundling and versioning, automated caption conversion, and synchronized databases with a third-party API.', tags: ['Content operations', 'Nuxt.js', 'API integration'], outcome: '150% more title throughput YoY', detail: 'Caption editing time reduced by 80%; data exports saved the publishing team 4 hours daily.', roleId: 'kanopy-2021' },
   ],
   contact: {
-    headline: ["Let's", 'build something', 'exact.'],
+    headline: ["Let's", 'build something', 'useful.'],
     links: [
-      { l: 'Email', v: 'romain.jouffret31@gmail.com' },
-      { l: 'Phone', v: '+1 (949) 430-1149' },
-      { l: 'LinkedIn', v: 'in/romainjouffret' },
-      { l: 'Full experience', v: 'View — all roles & education ↗', href: '/experience' },
+      { l: 'Email', v: profile.email, href: `mailto:${profile.email}` },
+      { l: 'LinkedIn', v: 'in/romainjouffret', href: profile.linkedin },
+      { l: 'Résumé', v: 'Download PDF', href: profile.resume, download: true },
+      { l: 'Full experience', v: 'All roles & education', href: '/experience/' },
     ],
   },
 }
@@ -79,30 +70,44 @@ function useReveal<T extends HTMLElement = HTMLElement>(threshold = 0.18): [Reac
 }
 
 // ── Theme ───────────────────────────────────────────────────────────────────
-function useTheme(): [string, React.Dispatch<React.SetStateAction<string>>] {
-  const [theme, setTheme] = useState(() => {
-    if (typeof window === 'undefined') return 'light'
+function readTheme() {
+  try {
     const saved = localStorage.getItem('rj-theme')
-    if (saved) return saved
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
-  })
+    if (saved === 'light' || saved === 'dark') return saved
+  } catch {}
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+}
+function subscribeTheme(onChange: () => void) {
+  window.addEventListener('storage', onChange)
+  window.addEventListener('rj-theme-change', onChange)
+  return () => {
+    window.removeEventListener('storage', onChange)
+    window.removeEventListener('rj-theme-change', onChange)
+  }
+}
+function useTheme(): [string, (theme: string) => void] {
+  const theme = useSyncExternalStore(subscribeTheme, readTheme, () => 'light')
   useEffect(() => {
-    document.documentElement.dataset.theme = theme
-    localStorage.setItem('rj-theme', theme)
+    document.documentElement.dataset.theme = readTheme()
   }, [theme])
-  return [theme, setTheme]
+  return [theme, (nextTheme) => {
+    try { localStorage.setItem('rj-theme', nextTheme) } catch {}
+    document.documentElement.dataset.theme = nextTheme
+    window.dispatchEvent(new Event('rj-theme-change'))
+  }]
 }
 
 // ── Live clock ──────────────────────────────────────────────────────────────
 function useClock() {
-  const [now, setNow] = useState(() => new Date())
+  const [now, setNow] = useState<Date | null>(null)
   useEffect(() => {
     const id = setInterval(() => setNow(new Date()), 1000)
     return () => clearInterval(id)
   }, [])
   return now
 }
-function fmtTime(d: Date, tz: string) {
+function fmtTime(d: Date | null, tz: string) {
+  if (!d) return '--:--:--'
   return d.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit', timeZone: tz, hour12: false })
 }
 
@@ -144,6 +149,7 @@ function Nav({ theme, setTheme }: { theme: string; setTheme: (t: string) => void
       </div>
       <div className="nav-right mono">
         <a href="#work">Work</a>
+        <a href="#experience">Experience</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
         <button className="theme-btn" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} aria-label="Toggle theme">
@@ -183,10 +189,10 @@ function Hero() {
     <header className="hero">
       <div ref={ref}>
         <div className="hero-tag">
-          <div className="a">— Portfolio / 2026.04</div>
-          <div className="b">Software Engineer · USA</div>
-          <div className="c">Index — 08 sections</div>
-          <div className="d">Open to opportunities ↗</div>
+          <div className="a">— Romain Jouffret / Portfolio</div>
+          <div className="b">Product &amp; engineering</div>
+          <div className="c">Los Angeles, CA</div>
+          <div className="d">Building Droplet</div>
         </div>
         <h1 className={'hero-name' + (inMark ? ' in' : '')}>
           <span className="line"><span className={'word' + (in1 ? ' in' : '')}>{CONTENT.name[0]}</span></span>
@@ -195,10 +201,10 @@ function Hero() {
       </div>
       <div className="hero-foot">
         <div className="role">
-          <b>{CONTENT.role}</b> — Currently SDE II at Amazon, working on distributed agent workflows and ML experimentation. Previously Kanopy. {CONTENT.edu}.
+          <b>{profile.role}</b> at Warp Laboratory. Leading Droplet, an on-premise AI appliance for businesses in regulated industries. Previously Amazon &amp; Kanopy.
         </div>
         <div className="now">
-          <span className="pulse" /> Available — Q2 2026
+          <a href={profile.resume} download className="resume-link">Download résumé <span aria-hidden="true">↓</span></a>
         </div>
         <div className="scroll">
           <span>Scroll</span>
@@ -214,7 +220,7 @@ function SecMeta({ num, label, desc }: { num: string; label: string; desc: strin
   return (
     <div className="sec-meta">
       <span className="num">{num}</span>
-      <span className="lbl">{label}</span>
+      <h2 className="lbl">{label}</h2>
       <span className="desc">{desc}</span>
     </div>
   )
@@ -225,7 +231,7 @@ function About() {
   const [ref, seen] = useReveal<HTMLDivElement>(0.2)
   return (
     <section id="about" className="sec about shell">
-      <SecMeta num="01" label="About — Origin & focus" desc="Who I am, what I work on, and how I work." />
+      <SecMeta num="01" label="About — Product & engineering" desc="Who I am, what I work on, and how I work." />
       <div className="grid-12" ref={ref}>
         <aside className="about-side">
           {CONTENT.about.meta.map((m, i) => (
@@ -252,7 +258,7 @@ function About() {
 function Skills() {
   return (
     <section id="skills" className="sec skills shell">
-      <SecMeta num="02" label="Stack — Disciplines" desc="Areas where I ship production work, with current tooling." />
+      <SecMeta num="04" label="Expertise — Product to production" desc="Product leadership grounded in hands-on engineering." />
       <div className="skills-grid">
         {CONTENT.skills.map((s, i) => <SkillCell key={s.idx} s={s} delay={i * 60} />)}
       </div>
@@ -275,7 +281,7 @@ function SkillCell({ s, delay }: { s: typeof CONTENT.skills[number]; delay: numb
 function Work() {
   return (
     <section id="work" className="sec work shell">
-      <SecMeta num="03" label="Selected work — 2023 → 2026" desc="A short list. Press any item for detail." />
+      <SecMeta num="02" label="Selected work" desc="Current product leadership and selected engineering outcomes." />
       <div className="work-list">
         {CONTENT.projects.map((p, i) => <Project key={p.num} p={p} i={i} />)}
       </div>
@@ -285,36 +291,21 @@ function Work() {
 
 function Project({ p, i }: { p: typeof CONTENT.projects[number]; i: number }) {
   const [ref, seen] = useReveal<HTMLElement>(0.12)
-  const previewRef = useRef<HTMLDivElement>(null)
-  useEffect(() => {
-    const cardEl = ref.current
-    const onScroll = () => {
-      if (!previewRef.current || !cardEl) return
-      const r = cardEl.getBoundingClientRect()
-      const center = window.innerHeight / 2
-      const offset = (r.top + r.height / 2 - center) * -0.06
-      previewRef.current.style.transform = `translate3d(0, ${offset}px, 0)`
-    }
-    window.addEventListener('scroll', onScroll, { passive: true })
-    onScroll()
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [ref])
   return (
     <article ref={ref} className={'proj reveal' + (seen ? ' in' : '')} style={{ transitionDelay: seen ? `${i * 80}ms` : '0ms' }}>
       <div className="num">— {p.num}</div>
       <div className="meta">
         <h3 className="ttl">
-          <span>{p.title}</span>
+          <a href={`/experience/#${p.roleId}`}>{p.title}<span className="arrow" aria-hidden="true"> ↗</span></a>
           <span className="yr">{p.year}</span>
-          <span className="arrow">↗</span>
         </h3>
+        <div className="company">{p.company}</div>
         <p className="desc">{p.desc}</p>
         <div className="tags">{p.tags.map((t) => <span key={t}>· {t}</span>)}</div>
       </div>
-      <div className="preview" ref={previewRef}>
-        <div className="ph">{p.ph}</div>
-        <span className="corner tl" /><span className="corner tr" />
-        <span className="corner bl" /><span className="corner br" />
+      <div className="outcome">
+        <p className="outcome-title">{p.outcome}</p>
+        <p className="outcome-detail">{p.detail}</p>
       </div>
     </article>
   )
@@ -324,15 +315,15 @@ function Project({ p, i }: { p: typeof CONTENT.projects[number]; i: number }) {
 function Experience() {
   return (
     <section id="experience" className="sec experience shell">
-      <SecMeta num="04" label="Experience — Last 4 roles" desc="Most recent work shown here. Full history available on the dedicated page." />
+      <SecMeta num="03" label="Experience — Recent roles" desc="From software engineering to company building. Explore the full career below." />
       <div className="grid-12">
         <div className="exp-list">
-          {CONTENT.experience.map((e, i) => <ExpRow key={i} e={e} i={i} />)}
+          {experience.slice(0, 4).map((e, i) => <ExpRow key={i} e={e} i={i} />)}
         </div>
       </div>
       <div className="grid-12" style={{ marginTop: 24 }}>
         <div style={{ gridColumn: '1 / 13', display: 'flex', justifyContent: 'flex-end' }}>
-          <a href="/experience" className="full-link mono">
+          <a href="/experience/" className="full-link mono">
             View full experience &amp; education <span className="arr">↗</span>
           </a>
         </div>
@@ -340,14 +331,14 @@ function Experience() {
     </section>
   )
 }
-function ExpRow({ e, i }: { e: typeof CONTENT.experience[number]; i: number }) {
+function ExpRow({ e, i }: { e: CareerRole; i: number }) {
   const [ref, seen] = useReveal<HTMLDivElement>(0.1)
   return (
     <div ref={ref} className={'exp-row reveal' + (seen ? ' in' : '')} style={{ transitionDelay: seen ? `${i * 50}ms` : '0ms' }}>
       <div className="yrs tnum">{e.yrs}</div>
-      <div className="role">{e.role} <span className="co">{e.co}</span></div>
+      <div className="role"><a href={`/experience/#${e.id}`}>{e.role}</a> <span className="co">{e.co}</span></div>
       <div className="scope">{e.scope}</div>
-      <div className="loc">{e.loc}</div>
+      <div className="loc">{e.loc ?? "Contract"}</div>
     </div>
   )
 }
@@ -357,7 +348,7 @@ function Contact() {
   const [ref, seen] = useReveal<HTMLDivElement>(0.2)
   return (
     <section id="contact" className="sec contact shell">
-      <SecMeta num="05" label="Contact — Channels" desc="Quickest path is email. I reply within 24h." />
+      <SecMeta num="05" label="Contact — Channels" desc="Get in touch about products, AI, and engineering." />
       <div className="grid-12">
         <div className="contact-inner" ref={ref}>
           <h2 className={'reveal' + (seen ? ' in' : '')}>
@@ -367,7 +358,7 @@ function Contact() {
           </h2>
           <div className="contact-side">
             {CONTENT.contact.links.map((l, i) => (
-              <a key={i} href={l.href || '#'} onClick={l.href ? undefined : (ev) => ev.preventDefault()}>
+              <a key={i} href={l.href} download={l.download || undefined}>
                 <span>{l.l} <span style={{ color: 'var(--ink-3)', marginLeft: 8 }}>{l.v}</span></span>
                 <span className="arr">↗</span>
               </a>
@@ -384,9 +375,9 @@ function Footer() {
   const now = useClock()
   return (
     <footer className="footer">
-      <div className="a">© {now.getFullYear()} — Romain Jouffret</div>
-      <div className="b">Designed &amp; built in code · No frameworks for the chrome · 2026</div>
-      <div className="c tnum">v 2.6.{String(now.getDate()).padStart(2, '0')}</div>
+      <div className="a">© {now?.getFullYear() ?? '2026'} — Romain Jouffret</div>
+      <div className="b">Product leadership · Software engineering</div>
+      <div className="c">{profile.location}</div>
     </footer>
   )
 }
@@ -400,13 +391,13 @@ export default function App() {
       <ReadingProgress />
       <Crosshair />
       <Nav theme={theme} setTheme={setTheme} />
-      <div style={{ paddingInline: '20px' }}>
+      <div className="portfolio-frame">
         <main>
           <Hero />
           <About />
-          <Skills />
           <Work />
           <Experience />
+          <Skills />
           <Contact />
         </main>
         <Footer />

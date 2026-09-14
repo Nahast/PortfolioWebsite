@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import { profile } from "@/data/profile";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Romain Jouffret — Portfolio",
-  description: "Personal portfolio of Romain Jouffret.",
+  title: "Romain Jouffret — Co-founder, CPO & Engineer",
+  description: profile.description,
 };
 
 export default function RootLayout({
