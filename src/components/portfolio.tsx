@@ -302,9 +302,8 @@ function Project({ p, i }: { p: typeof CONTENT.projects[number]; i: number }) {
       <div className="meta">
         <h3 className="ttl">
           <Link href={`/experience/#${p.roleId}`}>{p.title}<span className="arrow" aria-hidden="true"> ↗</span></Link>
-          <span className="yr">{p.year}</span>
         </h3>
-        <div className="company">{p.company}</div>
+        <div className="sub"><span>{p.company}</span><span className="yr">{p.year}</span></div>
         <p className="desc">{p.desc}</p>
         <div className="tags">{p.tags.map((t) => <span key={t}>· {t}</span>)}</div>
       </div>
