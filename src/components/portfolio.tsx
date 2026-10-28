@@ -36,12 +36,12 @@ const CONTENT = {
     { idx: '08', head: 'Customer delivery', desc: 'Customer pilots, commercial offerings, client projects, and quality assurance.', stack: ['Pilots', 'Commercial strategy', 'QA'] },
   ],
   projects: [
-    { num: '01', title: 'Droplet', company: 'Warp Laboratory', year: '2026 — present', desc: 'Leading product for an on-premise AI appliance that brings modern AI to small and medium-sized businesses in regulated industries, with no data leaving their premises.', tags: ['Product strategy', 'On-premise AI', 'Privacy'], outcome: 'From concept to customer pilots', detail: 'Three-year lease offering; pilots in photo, automotive, and real estate.', roleId: 'warp-laboratory' },
+    { num: '01', title: 'Droplet', company: 'Warp Laboratory', year: '2026 – present', desc: 'Leading product for an on-premise AI appliance that brings modern AI to small and medium-sized businesses in regulated industries, with no data leaving their premises.', tags: ['Product strategy', 'On-premise AI', 'Privacy'], outcome: 'From concept to customer pilots', detail: 'Three-year lease offering; pilots in photo, automotive, and real estate.', roleId: 'warp-laboratory' },
     { num: '02', title: 'Internal Applications Portal', company: 'Capital Group', year: '2026', desc: 'Delivered DevOps improvements and disaster recovery planning for the internal applications portal during a senior full stack engineering contract.', tags: ['DevOps', 'Disaster recovery', 'Authentication'], outcome: 'Portal authentication migrated', detail: 'Moved portal authentication to NerveCenter.', roleId: 'capital-group' },
-    { num: '03', title: 'Distributed agent workflows', company: 'Amazon', year: '2024 — 2026', desc: 'Automated xBR operational pipelines with distributed agent workflows, improving cross-service data validation accuracy.', tags: ['Agents', 'Distributed systems', 'Automation'], outcome: '4+ hours reclaimed each week', detail: 'Product manager time saved through workflow automation.', roleId: 'amazon' },
-    { num: '04', title: 'Marketing & Discoverability', company: 'Amazon', year: '2024 — 2026', desc: 'Built and deployed ML-driven experiments with AWS Lambda, Python, and internal experimentation frameworks for Amazon Private Brands.', tags: ['ML experiments', 'AWS Lambda', 'Python'], outcome: 'Personalization at scale', detail: 'Improved personalization and merchandising for millions of customers.', roleId: 'amazon' },
-    { num: '05', title: 'Reliable content ingestion', company: 'Kanopy', year: '2021 — 2024', desc: 'Developed the Lambda job system for external supplier files and upgraded AWS ECS services in TypeScript and NestJS.', tags: ['TypeScript', 'NestJS', 'AWS'], outcome: '98% ingestion success rate', detail: 'ECS upgrades also reduced post-release errors from 2,000+ per day to near zero.', roleId: 'kanopy-2021' },
-    { num: '06', title: 'Publishing automation', company: 'Kanopy', year: '2021 — 2024', desc: 'Revamped asset bundling and versioning, automated caption conversion, and synchronized databases with a third-party API.', tags: ['Content operations', 'Nuxt.js', 'API integration'], outcome: '150% more title throughput YoY', detail: 'Caption editing time reduced by 80%; data exports saved the publishing team 4 hours daily.', roleId: 'kanopy-2021' },
+    { num: '03', title: 'Distributed agent workflows', company: 'Amazon', year: '2024 – 2026', desc: 'Automated xBR operational pipelines with distributed agent workflows, improving cross-service data validation accuracy.', tags: ['Agents', 'Distributed systems', 'Automation'], outcome: '4+ hours reclaimed each week', detail: 'Product manager time saved through workflow automation.', roleId: 'amazon' },
+    { num: '04', title: 'Marketing & Discoverability', company: 'Amazon', year: '2024 – 2026', desc: 'Built and deployed ML-driven experiments with AWS Lambda, Python, and internal experimentation frameworks for Amazon Private Brands.', tags: ['ML experiments', 'AWS Lambda', 'Python'], outcome: 'Personalization at scale', detail: 'Improved personalization and merchandising for millions of customers.', roleId: 'amazon' },
+    { num: '05', title: 'Reliable content ingestion', company: 'Kanopy', year: '2021 – 2024', desc: 'Developed the Lambda job system for external supplier files and upgraded AWS ECS services in TypeScript and NestJS.', tags: ['TypeScript', 'NestJS', 'AWS'], outcome: '98% ingestion success rate', detail: 'ECS upgrades also reduced post-release errors from 2,000+ per day to near zero.', roleId: 'kanopy-2021' },
+    { num: '06', title: 'Publishing automation', company: 'Kanopy', year: '2021 – 2024', desc: 'Revamped asset bundling and versioning, automated caption conversion, and synchronized databases with a third-party API.', tags: ['Content operations', 'Nuxt.js', 'API integration'], outcome: '150% more title throughput YoY', detail: 'Caption editing time reduced by 80%; data exports saved the publishing team 4 hours daily.', roleId: 'kanopy-2021' },
   ],
   contact: {
     headline: ["Let's", 'build something', 'useful.'],
@@ -148,14 +148,16 @@ function Nav({ theme, setTheme }: { theme: string; setTheme: (t: string) => void
         <span className="dot" />
         <span>RJ — Portfolio / 2026</span>
       </div>
-      <div className="nav-clock mono tnum">
+      <div className="nav-clock mono tnum" aria-hidden="true">
         <span><span className="k">LAX</span> {fmtTime(now, 'America/Los_Angeles')}</span>
         <span><span className="k">NYC</span> {fmtTime(now, 'America/New_York')}</span>
       </div>
       <div className="nav-right mono">
-        {NAV_LINKS.map((l) => (
-          <a key={l.id} href={`#${l.id}`} aria-current={active === l.id ? 'true' : undefined}>{l.label}</a>
-        ))}
+        <div className="nav-links">
+          {NAV_LINKS.map((l) => (
+            <a key={l.id} href={`#${l.id}`} aria-current={active === l.id ? 'true' : undefined}>{l.label}</a>
+          ))}
+        </div>
         <button className="theme-btn" role="switch" aria-checked={theme === 'dark'} onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} aria-label="Dark mode">
           <span className="sw" />
           <span>{theme === 'dark' ? 'Dark' : 'Light'}</span>
@@ -297,14 +299,16 @@ function Work() {
 function Project({ p, i }: { p: typeof CONTENT.projects[number]; i: number }) {
   const [ref, seen] = useReveal<HTMLElement>(0.12)
   return (
-    <article ref={ref} className={'proj reveal' + (seen ? ' in' : '')} style={{ transitionDelay: seen ? `${i * 80}ms` : '0ms' }}>
+    <article ref={ref} className={'proj reveal' + (i === 0 ? ' lead' : '') + (seen ? ' in' : '')} style={{ transitionDelay: seen ? `${i * 80}ms` : '0ms' }}>
       <div className="num">— {p.num}</div>
       <div className="meta">
         <h3 className="ttl">
-          <Link href={`/experience/#${p.roleId}`}>{p.title}<span className="arrow" aria-hidden="true"> ↗</span></Link>
-          <span className="yr">{p.year}</span>
+          <Link href={`/experience/#${p.roleId}`}>
+            {p.title.split(' ').slice(0, -1).join(' ')}{' '}
+            <span className="nw">{p.title.split(' ').slice(-1)}<span className="arrow" aria-hidden="true">↗</span></span>
+          </Link>
         </h3>
-        <div className="company">{p.company}</div>
+        <div className="sub"><span>{p.company}</span><span className="yr">{p.year}</span></div>
         <p className="desc">{p.desc}</p>
         <div className="tags">{p.tags.map((t) => <span key={t}>· {t}</span>)}</div>
       </div>
