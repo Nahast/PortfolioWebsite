@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useSyncExternalStore } from 'react'
 import Link from 'next/link'
+import HeroField from './hero-field'
 import ReadingProgress from './reading-progress'
 import { experience, profile, type CareerRole } from '@/data/profile'
 
@@ -190,6 +191,7 @@ function Hero() {
 
   return (
     <header className="hero">
+      <HeroField />
       <div ref={ref}>
         <div className="hero-tag">
           <div className="a">— Romain Jouffret / Portfolio</div>
