@@ -32,7 +32,7 @@ export default function ExperiencePage() {
   return (
     <>
       <ReadingProgress />
-      <main className="page">
+      <main className="page" id="main">
         <div className="back-row">
           <Link href="/"><span className="arr">←</span> Back to portfolio</Link>
           <div className="b">Romain Jouffret — Full experience</div>

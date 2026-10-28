@@ -1,6 +1,8 @@
 'use client'
 
 import { useState, useEffect, useRef, useSyncExternalStore } from 'react'
+import Link from 'next/link'
+import HeroField from './hero-field'
 import ReadingProgress from './reading-progress'
 import { experience, profile, type CareerRole } from '@/data/profile'
 
@@ -112,10 +114,36 @@ function fmtTime(d: Date | null, tz: string) {
 }
 
 // ── Nav ─────────────────────────────────────────────────────────────────────
+const NAV_LINKS = [
+  { id: 'about', label: 'About' },
+  { id: 'work', label: 'Work' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'skills', label: 'Expertise' },
+  { id: 'contact', label: 'Contact' },
+]
+
+function useActiveSection() {
+  const [active, setActive] = useState('')
+  useEffect(() => {
+    const els = NAV_LINKS.map((l) => document.getElementById(l.id)).filter((e): e is HTMLElement => !!e)
+    // A section is "active" while it crosses the band 30–40% down the viewport.
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => { if (e.isIntersecting) setActive(e.target.id) }),
+      { rootMargin: '-30% 0px -60% 0px' }
+    )
+    els.forEach((el) => io.observe(el))
+    const onScroll = () => { if (window.scrollY < 200) setActive('') }
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => { io.disconnect(); window.removeEventListener('scroll', onScroll) }
+  }, [])
+  return active
+}
+
 function Nav({ theme, setTheme }: { theme: string; setTheme: (t: string) => void }) {
   const now = useClock()
+  const active = useActiveSection()
   return (
-    <nav className="nav">
+    <nav className="nav" aria-label="Primary">
       <div className="nav-mark mono">
         <span className="dot" />
         <span>RJ — Portfolio / 2026</span>
@@ -125,11 +153,10 @@ function Nav({ theme, setTheme }: { theme: string; setTheme: (t: string) => void
         <span><span className="k">NYC</span> {fmtTime(now, 'America/New_York')}</span>
       </div>
       <div className="nav-right mono">
-        <a href="#work">Work</a>
-        <a href="#experience">Experience</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-        <button className="theme-btn" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} aria-label="Toggle theme">
+        {NAV_LINKS.map((l) => (
+          <a key={l.id} href={`#${l.id}`} aria-current={active === l.id ? 'true' : undefined}>{l.label}</a>
+        ))}
+        <button className="theme-btn" role="switch" aria-checked={theme === 'dark'} onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} aria-label="Dark mode">
           <span className="sw" />
           <span>{theme === 'dark' ? 'Dark' : 'Light'}</span>
         </button>
@@ -152,11 +179,11 @@ function Hero() {
 
   const ref = useRef<HTMLDivElement>(null)
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     const onScroll = () => {
       if (!ref.current) return
       const y = Math.min(window.scrollY, 800)
       ref.current.style.transform = `translate3d(0, ${y * 0.18}px, 0)`
-      ref.current.style.opacity = String(1 - Math.min(y / 700, 1) * 0.6)
     }
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
@@ -164,6 +191,7 @@ function Hero() {
 
   return (
     <header className="hero">
+      <HeroField />
       <div ref={ref}>
         <div className="hero-tag">
           <div className="a">— Romain Jouffret / Portfolio</div>
@@ -273,7 +301,7 @@ function Project({ p, i }: { p: typeof CONTENT.projects[number]; i: number }) {
       <div className="num">— {p.num}</div>
       <div className="meta">
         <h3 className="ttl">
-          <a href={`/experience/#${p.roleId}`}>{p.title}<span className="arrow" aria-hidden="true"> ↗</span></a>
+          <Link href={`/experience/#${p.roleId}`}>{p.title}<span className="arrow" aria-hidden="true"> ↗</span></Link>
           <span className="yr">{p.year}</span>
         </h3>
         <div className="company">{p.company}</div>
@@ -300,9 +328,9 @@ function Experience() {
       </div>
       <div className="grid-12" style={{ marginTop: 24 }}>
         <div style={{ gridColumn: '1 / 13', display: 'flex', justifyContent: 'flex-end' }}>
-          <a href="/experience/" className="full-link mono">
+          <Link href="/experience/" className="full-link mono">
             View full experience &amp; education <span className="arr">↗</span>
-          </a>
+          </Link>
         </div>
       </div>
     </section>
@@ -313,7 +341,7 @@ function ExpRow({ e, i }: { e: CareerRole; i: number }) {
   return (
     <div ref={ref} className={'exp-row reveal' + (seen ? ' in' : '')} style={{ transitionDelay: seen ? `${i * 50}ms` : '0ms' }}>
       <div className="yrs tnum">{e.yrs}</div>
-      <div className="role"><a href={`/experience/#${e.id}`}>{e.role}</a> <span className="co">{e.co}</span></div>
+      <div className="role"><Link href={`/experience/#${e.id}`}>{e.role}</Link> <span className="co">{e.co}</span></div>
       <div className="scope">{e.scope}</div>
       <div className="loc">{e.loc ?? "Contract"}</div>
     </div>
@@ -368,7 +396,7 @@ export default function App() {
       <ReadingProgress />
       <Nav theme={theme} setTheme={setTheme} />
       <div className="portfolio-frame">
-        <main>
+        <main id="main">
           <Hero />
           <About />
           <Work />

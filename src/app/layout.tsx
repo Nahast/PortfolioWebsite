@@ -14,10 +14,30 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const TITLE = "Romain Jouffret — Co-founder, CPO & Engineer";
+
 export const metadata: Metadata = {
-  title: "Romain Jouffret — Co-founder, CPO & Engineer",
+  metadataBase: new URL("https://romainjouffret.com"),
+  title: TITLE,
   description: profile.description,
+  alternates: { canonical: "/" },
+  openGraph: { type: "website", title: TITLE, description: profile.description, siteName: profile.name },
+  twitter: { card: "summary", title: TITLE, description: profile.description },
 };
+
+const PERSON_JSON_LD = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: profile.name,
+  jobTitle: profile.role,
+  description: profile.description,
+  url: "https://romainjouffret.com",
+  email: profile.email,
+  sameAs: [profile.linkedin],
+  worksFor: { "@type": "Organization", name: "Warp Laboratory, Inc." },
+  alumniOf: { "@type": "CollegeOrUniversity", name: "EPITA" },
+  address: { "@type": "PostalAddress", addressLocality: "Los Angeles", addressRegion: "CA" },
+}).replace(/</g, "\\u003c");
 
 // Inlined theme-init script content.
 // dangerouslySetInnerHTML opts out of React 19's script-resource hoisting
@@ -39,6 +59,8 @@ export default function RootLayout({
     >
       <body>
         <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: PERSON_JSON_LD }} />
+        <a href="#main" className="skip-link">Skip to content</a>
         <Crosshair />
         {children}
       </body>
