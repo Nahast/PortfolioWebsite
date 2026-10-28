@@ -25,7 +25,7 @@ export type CareerRole = {
 export const experience: CareerRole[] = [
   {
     id: 'warp-laboratory',
-    yrs: 'Mar 2026 — present',
+    yrs: 'Mar 2026 – present',
     role: 'Co-founder & Chief Product Officer',
     co: 'Warp Laboratory, Inc.',
     loc: 'Newport Beach, CA',
@@ -39,7 +39,7 @@ export const experience: CareerRole[] = [
   },
   {
     id: 'capital-group',
-    yrs: 'Feb 2026 — Apr 2026',
+    yrs: 'Feb 2026 – Apr 2026',
     role: 'Senior Full Stack Engineer (Contract)',
     co: 'Capital Group',
     team: 'Internal Applications Portal',
@@ -52,7 +52,7 @@ export const experience: CareerRole[] = [
   },
   {
     id: 'amazon',
-    yrs: 'Oct 2024 — Mar 2026',
+    yrs: 'Oct 2024 – Mar 2026',
     role: 'Software Development Engineer II',
     co: 'Amazon',
     loc: 'Santa Monica, CA',
@@ -68,7 +68,7 @@ export const experience: CareerRole[] = [
   },
   {
     id: 'kanopy-2021',
-    yrs: 'Feb 2021 — Nov 2024',
+    yrs: 'Feb 2021 – Nov 2024',
     role: 'Software Engineer I',
     co: 'Kanopy',
     loc: 'Irvine, CA',
@@ -85,7 +85,7 @@ export const experience: CareerRole[] = [
   },
   {
     id: 'headmind',
-    yrs: 'Oct 2019 — May 2021',
+    yrs: 'Oct 2019 – May 2021',
     role: 'Digital Business Application Consultant',
     co: 'HeadMind Partners',
     loc: 'Paris, France',
@@ -99,7 +99,7 @@ export const experience: CareerRole[] = [
   },
   {
     id: 'kanopy-2018',
-    yrs: 'Feb 2018 — Feb 2019',
+    yrs: 'Feb 2018 – Feb 2019',
     role: 'Back End Software Engineer',
     co: 'Kanopy',
     loc: 'San Francisco, CA',
@@ -113,7 +113,7 @@ export const experience: CareerRole[] = [
   },
   {
     id: 'imerys',
-    yrs: 'Aug 2016 — Jan 2017',
+    yrs: 'Aug 2016 – Jan 2017',
     role: 'Software Engineering Trainee',
     co: 'Imerys',
     loc: 'San Jose, CA',
@@ -125,7 +125,7 @@ export const experience: CareerRole[] = [
   },
   {
     id: 'airbus',
-    yrs: 'Jul 2015 — Aug 2015',
+    yrs: 'Jul 2015 – Aug 2015',
     role: 'Software Engineering Intern',
     co: 'Airbus Defence and Space (Space Systems, Inc.)',
     team: 'Optimization and Payload Telecom Management Products',
@@ -138,7 +138,7 @@ export const experience: CareerRole[] = [
 export const leadership: CareerRole[] = [
   {
     id: 'cristal',
-    yrs: 'Apr 2016 — Jan 2018',
+    yrs: 'Apr 2016 – Jan 2018',
     role: 'Treasurer, Board Member & Commercial Engineer',
     co: 'Association Cristal',
     loc: 'Paris, France',
@@ -151,7 +151,7 @@ export const leadership: CareerRole[] = [
 ]
 
 export const education = [
-  { yrs: '2013 — 2018', school: 'EPITA, Ingénierie Informatique', qualification: 'Master of Engineering (M.Eng.), Multimedia and Information Technology', loc: 'Paris, France' },
+  { yrs: '2013 – 2018', school: 'EPITA, Ingénierie Informatique', qualification: 'Master of Engineering (M.Eng.), Multimedia and Information Technology', loc: 'Paris, France' },
   { yrs: '2015', school: 'California State University, Monterey Bay', qualification: 'Computer Science', loc: 'Monterey Bay, CA' },
 ]
 

@@ -13,7 +13,7 @@ export default function ReadingProgress() {
         const h = document.documentElement
         const max = h.scrollHeight - h.clientHeight
         const pct = max > 0 ? (h.scrollTop / max) * 100 : 0
-        if (barRef.current) barRef.current.style.width = pct.toFixed(2) + '%'
+        if (barRef.current) barRef.current.style.transform = `scaleX(${(pct / 100).toFixed(4)})`
       })
     }
     window.addEventListener('scroll', onScroll, { passive: true })
